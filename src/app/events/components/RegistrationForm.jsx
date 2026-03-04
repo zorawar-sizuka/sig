@@ -89,7 +89,8 @@ export default function RegistrationForm({ eventName, onClose }) {
                 required
                 type="number"
                 min="1"
-                className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all mt-1"
+                className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all mt-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                style={{ MozAppearance: 'textfield' }}
                 value={formData.visitors}
                 onChange={(e) => setFormData({ ...formData, visitors: Number(e.target.value) })}
               />
