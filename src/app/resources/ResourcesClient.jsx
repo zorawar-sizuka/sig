@@ -175,7 +175,7 @@ export default function ResourcesPage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-serif text-slate-900 mb-12">Latest Insights</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {loading ? (
                <div className="col-span-full py-12 text-center text-slate-500">Loading insights...</div>
             ) : blogs.filter(b => b.isPublished).length === 0 ? (
@@ -185,64 +185,47 @@ export default function ResourcesPage() {
                 key={blog.id}
                 layoutId={`blog-card-${blog.id}`}
                 onClick={() => setSelectedBlog(blog)}
-                className="group cursor-pointer flex flex-col w-full bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden"
-                whileHover={{ y: -8 }}
+                className="group cursor-pointer flex flex-col w-full bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 h-full"
+                whileHover={{ y: -4 }}
               > 
-                {/* 1. Header Image & Meta (Editorial style with inner tags) */}
-                <div className="relative h-64 md:h-[340px] w-full overflow-hidden bg-slate-100">
+                {/* 1. Image Container (Taller, vertical orientation) */}
+                <div className="relative aspect-[4/3] mt-4 mx-4 overflow-hidden rounded-[1.5rem] bg-pink-50 flex-shrink-0">
                   <Image 
                     src={blog.imageUrl} 
                     alt={blog.title} 
                     fill  
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
-                  {/* Deep vignette gradient for premium feel and text legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-90" />
                   
-                  {/* Floating Tags (Glassmorphism look) */}
-                  <div className="absolute top-6 left-6 right-6 flex flex-wrap gap-2 z-10">
-                    {blog.tags.map((tag, t) => (
+                  {/* Floating Tags (Minimal) */}
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
+                    {blog.tags.slice(0, 2).map((tag, t) => (
                       <span 
                         key={t} 
-                        className="px-4 py-2 text-[10px] font-extrabold rounded-full uppercase tracking-[0.2em] backdrop-blur-md bg-white/95 shadow-sm text-slate-800 transition-colors group-hover:bg-blue-600 group-hover:text-white"
+                        className="px-3 py-1.5 text-[11px] font-semibold rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-sm backdrop-blur-sm"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-
-                  {/* Read Time / Category Badge */}
-                  <div className="absolute bottom-6 left-6 flex items-center gap-2 text-white/95 text-sm font-medium z-10 shadow-sm">
-                    <Calendar className="w-4 h-4" />
-                    <span className="tracking-wide">Insight &bull; 5 min read</span>
-                  </div>
                 </div>
 
-                {/* 2. Content Body */}
-                <div className="flex flex-col flex-1 p-8 md:p-10">
-                  <h3 className="text-2xl md:text-[2rem] font-serif text-slate-900 mb-5 leading-[1.15] group-hover:text-blue-700 transition-colors line-clamp-2">
+                {/* 2. Content Body (Vertical emphasis) */}
+                <div className="flex flex-col flex-1 p-6 md:p-8">
+                  <h3 className="text-[20px] md:text-[22px] font-medium text-slate-900 mb-6 leading-snug line-clamp-3">
                     {blog.title}
                   </h3>
-                  <p className="text-slate-500 text-[1.05rem] font-light leading-relaxed mb-8 line-clamp-3">
-                    {blog.description}
-                  </p>
 
-                  {/* 3. Action Footer */}
-                  <div className="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between">
-                    <div className="inline-flex items-center gap-4 text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
-                      <span className="uppercase tracking-[0.15em] text-[11px]">Read Article</span>
-                      <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-blue-700 group-hover:bg-blue-50 transition-all duration-300">
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                      </div>
-                    </div>
-                    {/* Dedicated Page Link for SEO / Open in New Tab */}
+                  {/* 3. Action Footer: "Read more" with Logo */}
+                  <div className="mt-auto">
                     <Link
                       href={`/resources/${blog.id}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="text-[10px] font-bold text-slate-400 hover:text-slate-600 uppercase tracking-widest border-b border-transparent hover:border-slate-400 transition-colors"
+                      className="inline-flex items-center gap-2 text-[1.1rem] font-medium text-[#8B5CF6] hover:text-[#7C3AED] transition-colors"
                     >
-                      Open dedicated page
+                      Read more
+                      <ArrowUpRight className="w-5 h-5" />
                     </Link>
                   </div>
                 </div>
