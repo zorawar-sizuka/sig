@@ -99,7 +99,6 @@ export default async function EventsGridServer() {
         isPublished: true,
       },
     });
-    console.log("[EventsGridServer] prisma events =", events.length);
   } catch (error) {
     console.warn("[EventsGridServer] Failed to fetch events (likely DB cold start):", error.message);
   }

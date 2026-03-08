@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   try {
     const body = await req.json();
-    console.log("📝 Attempting to book:", body); // Log input
 
     // Validate Date
     if (!body.date) {
@@ -23,10 +22,9 @@ export async function POST(req) {
       },
     });
 
-    console.log("✅ Booking Saved:", result);
     return NextResponse.json(result);
   } catch (error) {
-    console.error("❌ Booking Error:", error); // Print the actual error
+    console.error("Booking Error:", error.message); // Print the actual error
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

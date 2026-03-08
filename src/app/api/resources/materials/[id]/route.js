@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -32,6 +33,7 @@ export async function PUT(req, { params }) {
             data: { title, description, iconName, themeName, fileUrl, isPublished },
         });
 
+        revalidatePath("/resources");
         return NextResponse.json(updatedMaterial, { status: 200 });
     } catch (error) {
         console.error("Error updating study material:", error);
@@ -50,6 +52,7 @@ export async function DELETE(req, { params }) {
             where: { id: parseInt(id) },
         });
 
+        revalidatePath("/resources");
         return NextResponse.json({ message: "Deleted successfully" }, { status: 200 });
     } catch (error) {
         console.error("Error deleting study material:", error);

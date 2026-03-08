@@ -7,7 +7,7 @@ export async function POST(req) {
     const toolType = body?.toolType;
     const sessionId = body?.sessionId || null;
     const payload = body?.payload ?? {};
-    const result = body?.result ?? null; 
+    const result = body?.result ?? null;
     const saved = Boolean(body?.saved);
 
     const allowed = ["eligibility", "finder", "cost", "sop", "gpa"]; // Added "gpa"
@@ -20,7 +20,7 @@ export async function POST(req) {
         toolType,
         sessionId,
         payload,
-        result, 
+        result,
         saved
       },
       select: {
@@ -45,7 +45,6 @@ export async function POST(req) {
             createdAt: { lt: cutoffTimestamp }, // Deletes oldest excess
           },
         });
-        console.log(`[FIFO] Pruned ${excess} old runs for session ${sessionId}`);
       }
     }
 
@@ -53,7 +52,7 @@ export async function POST(req) {
   } catch (e) {
     console.error("[Tool Run Error]:", e);
     return NextResponse.json({ ok: false, error: "Failed to save tool run" }, { status: 500 });
-  } 
+  }
 }
 
 // Helper (moved outside—now callable)

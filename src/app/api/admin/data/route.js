@@ -12,7 +12,7 @@
 //   try {
 //     const bookings = await prisma.booking.findMany({ orderBy: { createdAt: 'desc' } });
 //     const inquiries = await prisma.inquiry.findMany({ orderBy: { createdAt: 'desc' } });
-    
+
 //     return NextResponse.json(
 //       { bookings, inquiries },
 //       { headers: { 'Cache-Control': 'no-store' } } // <--- IMPORTANT
@@ -53,6 +53,8 @@
 
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const globalForPrisma = global;
 const prisma = globalForPrisma.prisma || new PrismaClient();
@@ -60,11 +62,27 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
 export const dynamic = 'force-dynamic';
 
+async function requireAdmin() {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user) {
+    return { ok: false, res: NextResponse.json({ error: "Unauthorized" }, { status: 401 }) };
+  }
+  if (session.user.role !== "ADMIN") {
+    return { ok: false, res: NextResponse.json({ error: "Forbidden" }, { status: 403 }) };
+  }
+
+  return { ok: true, session };
+}
+
 export async function GET() {
+  const guard = await requireAdmin();
+  if (!guard.ok) return guard.res;
+
   try {
     // Fetch all data in parallel
-    const [bookings, contacts,  inquiries, registrations, subscribers] = await Promise.all([
-      prisma.booking.findMany({ orderBy: { createdAt: 'desc' } }), 
+    const [bookings, contacts, inquiries, registrations, subscribers] = await Promise.all([
+      prisma.booking.findMany({ orderBy: { createdAt: 'desc' } }),
       prisma.contact.findMany({ orderBy: { createdAt: 'desc' } }),
       prisma.inquiry.findMany({ orderBy: { createdAt: 'desc' } }),
       prisma.eventRegistration.findMany({ orderBy: { createdAt: 'desc' } }),
@@ -73,7 +91,7 @@ export async function GET() {
 
     // Return strictly JSON
     return NextResponse.json({
-      bookings: bookings || [], 
+      bookings: bookings || [],
       contacts: contacts || [],
       inquiries: inquiries || [],
       registrations: registrations || [],
@@ -83,8 +101,8 @@ export async function GET() {
   } catch (error) {
     console.error("❌ API ERROR:", error);
     // Return empty arrays instead of crashing, so the UI still loads
-    return NextResponse.json({ 
-      bookings: [], inquiries: [], registrations: [], subscribers: [] 
-    }); 
+    return NextResponse.json({
+      bookings: [], inquiries: [], registrations: [], subscribers: []
+    });
   }
 }

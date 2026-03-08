@@ -12,7 +12,6 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   try {
     const body = await req.json();
-    console.log("📝 Incoming Inquiry:", body); // Debug log
 
     // Validate required fields
     if (!body.name || !body.email || !body.destination) {
@@ -26,13 +25,12 @@ export async function POST(req) {
         email: body.email,
         destination: body.destination,
         // Make sure these match your Frontend JSON keys exactly
-        gpa: body.gpa || "",         
-        englishScore: body.englishScore || "", 
+        gpa: body.gpa || "",
+        englishScore: body.englishScore || "",
         course: body.course || "",
       },
     });
 
-    console.log("✅ Inquiry Saved:", newInquiry);
     return NextResponse.json({ success: true, data: newInquiry });
 
   } catch (error) {

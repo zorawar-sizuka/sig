@@ -18,7 +18,6 @@ const SERVICE_MAP = {
 export async function POST(req) {
   try {
     const body = await req.json();
-    console.log("📝 Attempting Contact:", body);
 
     // Validate required fields
     if (!body.fullName || !body.email || !body.service) {
@@ -48,7 +47,6 @@ export async function POST(req) {
       },
     });
 
-    console.log("✅ Contact Saved:", result);
     return NextResponse.json(result);
   } catch (error) {
     console.error("❌ Contact Error:", error);

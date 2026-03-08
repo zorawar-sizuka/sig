@@ -32,8 +32,8 @@ export async function GET(req) {
       orderBy: { date: "asc" },
       select: {
         id: true,
-        title: true, 
-        slug:true,
+        title: true,
+        slug: true,
         category: true,
         date: true,
         time: true,
@@ -46,8 +46,6 @@ export async function GET(req) {
       // Prisma Accelerate caching — global, does NOT count against Vercel ISR quota
       cacheStrategy: { ttl: 300, swr: 600 }, // 5 min cache + 10 min stale
     });
-
-    console.log("[Public Events API] Returned", events.length, "rows");
 
     return NextResponse.json(events, {
       // Edge caching — Vercel CDN caches this response
