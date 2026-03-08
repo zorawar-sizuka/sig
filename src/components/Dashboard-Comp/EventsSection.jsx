@@ -15,6 +15,8 @@ export default function EventsSection() {
   const [editingEvent, setEditingEvent] = useState(null);
   const [editLoading, setEditLoading] = useState(false);
   const [editError, setEditError] = useState(null);
+  const [editImagePreview, setEditImagePreview] = useState(null);
+  const [editUploadingImage, setEditUploadingImage] = useState(false);
 
   // New event form state
   const [newEvent, setNewEvent] = useState({
@@ -30,6 +32,8 @@ export default function EventsSection() {
   });
   const [createLoading, setCreateLoading] = useState(false);
   const [createError, setCreateError] = useState(null);
+  const [createImagePreview, setCreateImagePreview] = useState(null);
+  const [createUploadingImage, setCreateUploadingImage] = useState(false);
 
   // Fetch events on mount
   useEffect(() => {
@@ -59,14 +63,20 @@ export default function EventsSection() {
     }
   };
 
-  // Handle image upload (Vercel Blob) - shared for new + edit
-  const handleImageUpload = async (e, setStateFn) => {
+  const handleImageUpload = async (e, isEditMode) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     // Instant preview
     const previewUrl = URL.createObjectURL(file);
-    setStateFn((prev) => ({ ...prev, imageUrl: previewUrl }));
+    
+    if (isEditMode) {
+      setEditImagePreview(previewUrl);
+      setEditUploadingImage(true);
+    } else {
+      setCreateImagePreview(previewUrl);
+      setCreateUploadingImage(true);
+    }
 
     try {
       const formData = new FormData();
@@ -80,11 +90,19 @@ export default function EventsSection() {
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || "Upload failed");
 
-      // Replace preview with permanent URL
-      setStateFn((prev) => ({ ...prev, imageUrl: json.url }));
+      // Replace preview with permanent URL in the actual payload
+      if (isEditMode) {
+        setEditingEvent((prev) => ({ ...prev, imageUrl: json.url }));
+        setEditUploadingImage(false);
+      } else {
+        setNewEvent((prev) => ({ ...prev, imageUrl: json.url }));
+        setCreateUploadingImage(false);
+      }
     } catch (err) {
       console.error("Image upload failed:", err);
       alert("Image upload failed. Using preview only.");
+      if (isEditMode) setEditUploadingImage(false);
+      else setCreateUploadingImage(false);
     }
   };
 
@@ -118,6 +136,7 @@ export default function EventsSection() {
         imageUrl: "",
         isPublished: false,
       });
+      setCreateImagePreview(null);
 
       // Refetch events
       await fetchEvents();
@@ -151,6 +170,7 @@ export default function EventsSection() {
 
       setEditModalOpen(false);
       setEditingEvent(null);
+      setEditImagePreview(null);
 
       // Refetch events
       await fetchEvents();
@@ -180,6 +200,7 @@ export default function EventsSection() {
 
   const openEditModal = (event) => {
     setEditingEvent({ ...event }); // Copy to avoid mutating original
+    setEditImagePreview(null);
     setEditModalOpen(true);
     setEditError(null);
   };
@@ -285,17 +306,17 @@ export default function EventsSection() {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => handleImageUpload(e, setNewEvent)}
+                  onChange={(e) => handleImageUpload(e, false)}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
                 <div className="flex flex-col items-center justify-center text-slate-500">
                   <UploadCloud className="w-10 h-10 mb-3 text-indigo-500" />
                   <span className="text-sm font-medium">
-                    {newEvent.imageUrl ? "Image Selected (click to change)" : "Upload Event Image"}
+                    {createImagePreview || newEvent.imageUrl ? "Image Selected (click to change)" : "Upload Event Image"}
                   </span>
-                  {newEvent.imageUrl && (
+                  {(createImagePreview || newEvent.imageUrl) && (
                     <img
-                      src={newEvent.imageUrl}
+                      src={createImagePreview || newEvent.imageUrl}
                       alt="Preview"
                       className="mt-4 max-h-32 rounded-lg shadow-sm object-cover"
                     />
@@ -321,19 +342,19 @@ export default function EventsSection() {
               />
 
               <button
-                disabled={createLoading}
+                disabled={createLoading || createUploadingImage}
                 className={`w-full py-3 font-bold rounded-xl transition-all flex items-center justify-center gap-2
-                  ${createLoading
+                  ${(createLoading || createUploadingImage)
                     ? "bg-gray-400 text-white cursor-not-allowed"
                     : newEvent.isPublished
                     ? "bg-emerald-600 hover:bg-emerald-700 text-white"
                     : "bg-blue-600 hover:bg-blue-700 text-white"
                   }`}
               >
-                {createLoading ? (
+                {createLoading || createUploadingImage ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Saving...
+                    {createUploadingImage ? "Uploading Image..." : "Saving..."}
                   </>
                 ) : newEvent.isPublished ? (
                   "+ Publish Event"
@@ -512,17 +533,17 @@ export default function EventsSection() {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => handleImageUpload(e, setEditingEvent)}
+                  onChange={(e) => handleImageUpload(e, true)}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
                 <div className="flex flex-col items-center justify-center text-slate-500">
                   <UploadCloud className="w-10 h-10 mb-3 text-indigo-500" />
                   <span className="text-sm font-medium">
-                    {editingEvent.imageUrl ? "Image Selected (click to change)" : "Upload or Update Image"}
+                    {editImagePreview || editingEvent.imageUrl ? "Image Selected (click to change)" : "Upload or Update Image"}
                   </span>
-                  {editingEvent.imageUrl && (
+                  {(editImagePreview || editingEvent.imageUrl) && (
                     <img
-                      src={editingEvent.imageUrl}
+                      src={editImagePreview || editingEvent.imageUrl}
                       alt="Preview"
                       className="mt-4 max-h-40 rounded-lg shadow-sm object-cover"
                     />
@@ -557,6 +578,7 @@ export default function EventsSection() {
                   onClick={() => {
                     setEditModalOpen(false);
                     setEditingEvent(null);
+                    setEditImagePreview(null);
                     setEditError(null);
                   }}
                   className="flex-1 py-3 bg-gray-200 text-gray-800 font-bold rounded-xl hover:bg-gray-300 transition"
@@ -564,17 +586,17 @@ export default function EventsSection() {
                   Cancel
                 </button>
                 <button
-                  disabled={editLoading}
+                  disabled={editLoading || editUploadingImage}
                   className={`flex-1 py-3 font-bold rounded-xl transition-all flex items-center justify-center gap-2
-                    ${editLoading
+                    ${(editLoading || editUploadingImage)
                       ? "bg-gray-400 text-white cursor-not-allowed"
                       : "bg-indigo-600 hover:bg-indigo-700 text-white"
                     }`}
                 >
-                  {editLoading ? (
+                  {editLoading || editUploadingImage ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      Saving...
+                      {editUploadingImage ? "Uploading..." : "Saving..."}
                     </>
                   ) : (
                     "Update Event"
