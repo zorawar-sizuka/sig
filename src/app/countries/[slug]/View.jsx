@@ -278,70 +278,63 @@ export default function CountryView({ country }) {
       </div> 
 
 
-      <section className="mt-24 md:mt-32 mb-4">
+      <section className="mt-24 md:mt-32 mb-6">
   <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    
+    {/* Header */}
     <div className="flex flex-col gap-3 mb-10 md:mb-12">
       <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
         Explore More
       </span>
       <h2 className="text-3xl md:text-4xl font-serif text-slate-900">
-        Related Guides
+        Guides & Resources
       </h2>
       <p className="text-sm md:text-base text-slate-500 max-w-2xl leading-relaxed">
-        Helpful resources to understand costs, requirements, and the overall
-        application journey better.
+        Explore detailed guides, costs, visa processes, and expert insights to plan your study abroad journey better.
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-      <Link
-        href="/blog/total-cost-to-study-in-uk-from-nepal"
-        className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-4">
-              Cost Guide
-            </span>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
-              Total Cost to Study in UK from Nepal
-            </h3>
-            <p className="text-sm md:text-base text-slate-500 mt-3 leading-relaxed">
-              Breakdown of tuition fees, living expenses, visa charges, and
-              other important costs.
-            </p>
-          </div>
+    {/* Single Premium Card */}
+    <Link
+      href="/resources"
+      className="group relative block rounded-[2rem] overflow-hidden border border-slate-200 bg-white hover:shadow-2xl transition-all duration-500"
+    >
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-slate-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          <div className="shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+      {/* Content */}
+      <div className="relative p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        
+        {/* Text */}
+        <div className="max-w-xl">
+          <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-4">
+            All Resources
+          </span>
+
+          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+            Explore All Study Abroad Guides
+          </h3>
+
+          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed">
+            From country guides and visa processes to cost breakdowns and expert tips — everything you need in one place.
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-semibold text-slate-700 group-hover:text-blue-600 transition-colors">
+            Browse Resources
+          </span>
+
+          <div className="w-11 h-11 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
             <ArrowRight className="w-5 h-5 text-slate-700 group-hover:text-blue-600 transition-colors" />
           </div>
         </div>
-      </Link>
 
-      <Link
-        href="/blog/study-in-uk-from-nepal-requirements"
-        className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-4">
-              Requirements
-            </span>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
-              Study in UK Requirements
-            </h3>
-            <p className="text-sm md:text-base text-slate-500 mt-3 leading-relaxed">
-              Eligibility, required documents, and academic criteria explained
-              in a clear way.
-            </p>
-          </div>
+      </div>
+    </Link>
 
-          <div className="shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-            <ArrowRight className="w-5 h-5 text-slate-700 group-hover:text-blue-600 transition-colors" />
-          </div>
-        </div>
-      </Link>
-    </div>
   </div>
 </section>
 
