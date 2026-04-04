@@ -52,7 +52,7 @@ export async function generateMetadata({ params }) {
   const country = countriesData.find((c) => c.slug === slug);
   if (!country) return {};
 
-  const title = `Study in ${country.name}`;
+  const title = `Study in ${country.name} | Universities, Costs, Visa Guide `;
   const description =
     country.tagline ||
     `Explore top universities, entry requirements, costs, scholarships and visa guidance for studying in ${country.name}.`;

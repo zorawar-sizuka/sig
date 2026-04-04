@@ -40,7 +40,7 @@ const commonCourses = [
     // 1. UNITED KINGDOM (UK)
     // ------------------------------------------------------------------------------------
     {
-      slug: 'uk',
+      slug: 'study-in-uk',
       name: 'United Kingdom',
       tagline: 'Home to the world’s oldest and most prestigious universities.',
       heroImage: '/country_hero/uk_hero.avif', // Big Ben
@@ -111,7 +111,7 @@ const commonCourses = [
     // 2. UNITED STATES (USA)
     // ------------------------------------------------------------------------------------
     {
-      slug: 'usa',
+      slug: 'study-in-usa',
       name: 'United States',
       tagline: 'The land of opportunity and global leader in research and innovation.',
       heroImage: '/country_hero/usa_hero.avif', // NYC Skyline
@@ -183,7 +183,7 @@ const commonCourses = [
     // 3. CANADA
     // ------------------------------------------------------------------------------------
     {
-      slug: 'canada',
+      slug: 'study-in-canada',
       name: 'Canada',
       tagline: 'World-class education with the most welcoming immigration policies.',
       heroImage: '/country_hero/canada_hero.avif', // Toronto CN Tower
@@ -256,7 +256,7 @@ const commonCourses = [
   // 4. AUSTRALIA
   // ------------------------------------------------------------------------------------
   {
-    slug: 'australia',
+    slug: 'study-in-australia',
     name: 'Australia',
     tagline: 'A world-class education with an unbeatable lifestyle.',
     heroImage: '/country_hero/australia_hero.avif', // Sydney Opera House
@@ -330,7 +330,7 @@ const commonCourses = [
   // 5. GERMANY
   // ------------------------------------------------------------------------------------
   {
-    slug: 'germany',
+    slug: 'study-in-germany',
     name: 'Germany',
     tagline: 'Engineering excellence and tuition-free education in the heart of Europe.',
     heroImage: '/country_hero/germany_hero.avif', // Neuschwanstein Castle or Berlin
@@ -396,7 +396,7 @@ const commonCourses = [
   // 6. NEW ZEALAND
   // ------------------------------------------------------------------------------------
   {
-    slug: 'new-zealand',
+    slug: 'study-in-new-zealand',
     name: 'New Zealand',
     tagline: 'Pure landscapes and a forward-thinking education system.',
     heroImage: '/country_hero/newzealand_hero.avif', // Milford Sound
@@ -468,7 +468,7 @@ const commonCourses = [
   // 7. JAPAN
   // ------------------------------------------------------------------------------------
   {
-    slug: 'japan',
+    slug: 'study-in-japan',
     name: 'Japan',
     tagline: 'Where ancient tradition meets futuristic innovation.',
     heroImage: '/country_hero/japan_hero.avif', // Mt Fuji / Pagoda

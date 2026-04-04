@@ -53,13 +53,13 @@ const Navbar = () => {
         href: "/countries",
         dropdown: [
           { name: "Explore All", href: "/countries" },
-          { name: "USA", href: "/countries/usa" },
-          { name: "UK", href: "/countries/uk" },
-          { name: "Canada", href: "/countries/canada" },
-          { name: "Australia", href: "/countries/australia" },
-          { name: "Germany", href: "/countries/germany" },
-          { name: "Japan", href: "/countries/japan" },
-          { name: "New Zealand", href: "/countries/new-zealand" },
+          { name: "USA", href: "/countries/study-in-usa" },
+          { name: "UK", href: "/countries/study-in-uk" },
+          { name: "Canada", href: "/countries/study-in-canada" },
+          { name: "Australia", href: "/countries/study-in-australia" },
+          { name: "Germany", href: "/countries/study-in-germany" },
+          { name: "Japan", href: "/countries/study-in-japan" },
+          { name: "New Zealand", href: "/countries/study-in-new-zealand" },
         ],
       },
       {
@@ -146,10 +146,10 @@ const Navbar = () => {
         className="
           w-full h-full
           object-contain
-          scale-125                     // your preferred enlargement
-          p-1.5                         // inner breathing room
+          scale-125                    
+          p-1.5                         
           transition-transform duration-500 
-          group-hover:scale-135         // slightly more dramatic hover
+          group-hover:scale-135         
         "
         priority
       />
