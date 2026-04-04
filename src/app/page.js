@@ -52,7 +52,11 @@ export default function Home() {
     name: "E-spot International Education Consultancy",
     url: siteUrl,
     logo: `${siteUrl}/logos/logo.png`, // add /public/logo.png (or change path)
-    sameAs: [], // add social URLs later (optional)
+    sameAs: [
+     "https://www.instagram.com/espotinternational", 
+     "https://www.facebook.com/espotinternational", 
+     "https://www.tiktok.com/@espotinternational"
+    ], 
   };
 
   const websiteLd = {
