@@ -56,7 +56,30 @@ const MenuBar = () => {
         className={`px-2 py-1 rounded text-sm font-semibold ${editor.isActive('orderedList') ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-200 text-gray-700'}`}
       >
         Ordered List
-      </button>
+      </button> 
+
+      <button
+  onClick={(e) => {
+    e.preventDefault();
+    const url = prompt("Enter URL");
+    if (url) {
+      editor.chain().focus().setLink({ href: url }).run();
+    }
+  }}
+  className="px-2 py-1 rounded text-sm font-semibold hover:bg-gray-200 text-gray-700"
+>
+  Link
+</button>
+
+<button
+  onClick={(e) => {
+    e.preventDefault();
+    editor.chain().focus().unsetLink().run();
+  }}
+  className="px-2 py-1 rounded text-sm font-semibold hover:bg-gray-200 text-gray-700"
+>
+  Unlink
+</button>
     </div>
   );
 };

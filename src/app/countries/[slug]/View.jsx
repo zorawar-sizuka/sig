@@ -27,6 +27,7 @@ import {
   Palette
 } from 'lucide-react';
 import BookButton from '@/components/FormButton/BookButton';
+import Link from 'next/link';
 
 // --- 1. The Registry: Maps data strings to actual Components ---
 const iconRegistry = {
@@ -81,7 +82,10 @@ const UniversityScroller = ({ universities }) => {
 export default function CountryView({ country }) {
   const [activeTab, setActiveTab] = useState(0);
 
-  return (
+  return ( 
+
+
+
     <div className="min-h-screen bg-white">
       
       {/* HERO */}
@@ -102,12 +106,15 @@ export default function CountryView({ country }) {
              initial={{ opacity: 0, y: 30 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
-             className="text-6xl md:text-8xl font-serif text-white mb-6"
+             className="text-6xl md:text-8xl font-serif text-white mb-1"
            >
-             Study in {country.name}
-           </motion.h1>
+             Study in {country.name} 
+           </motion.h1> 
+           <p className="text-lg text-slate-100 max-w-2xl font-extralight mb-6">
+             from Nepal
+           </p>
            <p className="text-xl text-slate-200 max-w-2xl font-light">
-             {country.tagline}
+             # {country.tagline}
            </p>
         </div>
       </div>
@@ -132,7 +139,7 @@ export default function CountryView({ country }) {
               </div>
 
               <nav className="flex flex-col gap-4">
-                 {['Top Universities', 'Why Study Here', 'Entry Requirements'].map((item, i) => (
+                 {[`Top Universities in ${country.name} `, `Why Study in ${country.name}`, `Entry Requirements for ${country.name}`].map((item, i) => (
                    <a key={i} href={`#${item.toLowerCase().replace(/ /g, '-')}`} className="text-slate-500 hover:text-black transition-colors text-lg font-medium flex items-center gap-2 group">
                      <span className={`w-2 h-2 rounded-full ${country.themeColor} opacity-0 group-hover:opacity-100 transition-opacity`} />
                      {item}
@@ -154,7 +161,7 @@ export default function CountryView({ country }) {
             {/* UNIVERSITIES */}
             <section id="top-universities">
                <div className="flex items-end justify-between mb-8">
-                  <h2 className="text-4xl font-medium font-serif text-slate-900">Top Universities</h2>
+                  <h2 className="text-4xl font-medium font-serif text-slate-900">Top Universities in {country.name}</h2>
                   <span className="text-sm font-bold text-slate-400 uppercase tracking-widest hidden md:block">Scroll to explore</span>
                </div>
                <UniversityScroller universities={country.universities} />
@@ -162,7 +169,7 @@ export default function CountryView({ country }) {
 
             {/* WHY FEATURES (Bento Grid) */}
             <section id="why-study-here">
-              <h2 className="text-4xl font-medium font-serif text-slate-900 mb-12">Why {country.name}?</h2>
+              <h2 className="text-4xl font-medium font-serif text-slate-900 mb-12">Why study in {country.name}?</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {country.whyFeatures.map((feature, i) => {
                   
@@ -197,7 +204,7 @@ export default function CountryView({ country }) {
             {/* --- NEW SECTION: POPULAR COURSES --- */}
             <section id="popular-courses">
                <div className="flex items-end justify-between mb-10">
-                  <h2 className="text-4xl font-medium font-serif text-slate-900">Popular Courses</h2>
+                  <h2 className="text-4xl font-medium font-serif text-slate-900">Popular Courses in {country.name}</h2>
                   <span className="text-sm font-bold text-slate-400 uppercase tracking-widest hidden md:block">Top Fields</span>
                </div>
                
@@ -230,7 +237,7 @@ export default function CountryView({ country }) {
 
             {/* REQUIREMENTS */}
             <section id="entry-requirements">
-               <h2 className="text-4xl font-medium font-serif text-slate-900 mb-12">Entry Requirements</h2>
+               <h2 className="text-4xl font-medium font-serif text-slate-900 mb-12">Entry Requirements for {country.name}</h2>
                
                <div className="border border-slate-200 rounded-[2rem] p-8 md:p-12">
                   <div className="flex flex-wrap gap-4 mb-12 border-b border-slate-100 pb-4">
@@ -252,7 +259,7 @@ export default function CountryView({ country }) {
                   <div className="min-h-[200px]">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                       <ScrollText className={`w-6 h-6 ${country.textColor}`} />
-                      {country.requirements[activeTab].title} Criteria
+                      {country.requirements[activeTab].title} Criteria for {country.name}
                     </h3>
                     <ul className="space-y-4">
                       {country.requirements[activeTab].details.map((detail, k) => (
@@ -268,7 +275,77 @@ export default function CountryView({ country }) {
 
           </div>
         </div>
-      </div>
+      </div> 
+
+
+      <section className="mt-24 md:mt-32 mb-4">
+  <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="flex flex-col gap-3 mb-10 md:mb-12">
+      <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+        Explore More
+      </span>
+      <h2 className="text-3xl md:text-4xl font-serif text-slate-900">
+        Related Guides
+      </h2>
+      <p className="text-sm md:text-base text-slate-500 max-w-2xl leading-relaxed">
+        Helpful resources to understand costs, requirements, and the overall
+        application journey better.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+      <Link
+        href="/blog/total-cost-to-study-in-uk-from-nepal"
+        className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-4">
+              Cost Guide
+            </span>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+              Total Cost to Study in UK from Nepal
+            </h3>
+            <p className="text-sm md:text-base text-slate-500 mt-3 leading-relaxed">
+              Breakdown of tuition fees, living expenses, visa charges, and
+              other important costs.
+            </p>
+          </div>
+
+          <div className="shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+            <ArrowRight className="w-5 h-5 text-slate-700 group-hover:text-blue-600 transition-colors" />
+          </div>
+        </div>
+      </Link>
+
+      <Link
+        href="/blog/study-in-uk-from-nepal-requirements"
+        className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-4">
+              Requirements
+            </span>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+              Study in UK Requirements
+            </h3>
+            <p className="text-sm md:text-base text-slate-500 mt-3 leading-relaxed">
+              Eligibility, required documents, and academic criteria explained
+              in a clear way.
+            </p>
+          </div>
+
+          <div className="shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+            <ArrowRight className="w-5 h-5 text-slate-700 group-hover:text-blue-600 transition-colors" />
+          </div>
+        </div>
+      </Link>
+    </div>
+  </div>
+</section>
+
+
     </div>
   );
 }
