@@ -295,7 +295,14 @@ export default function AdminBlogsPage() {
                             </div>
                         </div>
                         <div className="mt-4 sm:mt-0 flex gap-2">
-                             <a href={`/resources/${blog.id}`} target="_blank" className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md">View</a>
+                        <a
+  href={`/resources/${blog.slug}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md"
+>
+  View
+</a>
                              <button onClick={() => handleDelete(blog.id)} className="px-3 py-1 text-sm bg-red-50 hover:bg-red-100 text-red-600 rounded-md">Delete</button>
                         </div>
                     </div>

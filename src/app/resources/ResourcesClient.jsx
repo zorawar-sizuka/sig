@@ -1,29 +1,392 @@
+// 'use client';
+
+// import React, { useState, useEffect } from 'react';
+// import Image from 'next/image';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import { Download, ArrowRight, X, ArrowUpRight, Calendar, Clock, ArrowRightCircle } from 'lucide-react';
+// import * as LucideIcons from "lucide-react";
+// import StudyLinksSection from '@/components/StudyLink';
+// import Link from 'next/link';
+
+// // Fallback Hero Data
+// const heroData = {
+//     title: "Everything you need for your journey",
+//     subtitle: "Free downloadable guides, checklists, and expert articles to help you navigate your study abroad application with confidence.",
+//     image: "/resources/resource_hero.avif" 
+// };
+
+// const getTagColor = (tag) => {
+//     const t = tag.toLowerCase();
+//     if (t.includes('exam') || t.includes('ielts') || t.includes('pte')) return 'bg-[#FEF3C7] text-[#92400E]'; // Yellow
+//     if (t.includes('english') || t.includes('language')) return 'bg-[#DBEAFE] text-[#1E40AF]'; // Blue
+//     if (t.includes('healing') || t.includes('budget')) return 'bg-[#D1FAE5] text-[#065F46]'; // Green
+//     return 'bg-slate-100 text-slate-600'; // Default Gray
+// };
+
+// // Map theme strings to Tailwind classes based on your original design
+// const themeMap = {
+//   blue: { bgColor: "bg-[#EFF6FF]", iconBg: "bg-[#3B82F6]", iconColor: "text-white", textColor: "text-[#1E3A8A]" },
+//   green: { bgColor: "bg-[#ECFDF5]", iconBg: "bg-[#10B981]", iconColor: "text-white", textColor: "text-[#064E3B]" },
+//   sky: { bgColor: "bg-[#E0F2FE]", iconBg: "bg-[#0EA5E9]", iconColor: "text-white", textColor: "text-[#0C4A6E]" },
+//   purple: { bgColor: "bg-[#F3E8FF]", iconBg: "bg-[#A855F7]", iconColor: "text-white", textColor: "text-[#581C87]" },
+//   orange: { bgColor: "bg-[#FFEDD5]", iconBg: "bg-[#F97316]", iconColor: "text-white", textColor: "text-[#7C2D12]" },
+//   red: { bgColor: "bg-[#FEE2E2]", iconBg: "bg-[#EF4444]", iconColor: "text-white", textColor: "text-[#7F1D1D]" },
+//   slate: { bgColor: "bg-[#F1F5F9]", iconBg: "bg-[#64748B]", iconColor: "text-white", textColor: "text-[#0F172A]" },
+// };
+
+// export default function ResourcesPage() {
+//   const [selectedBlog, setSelectedBlog] = useState(null);
+//   const [materials, setMaterials] = useState([]);
+//   const [blogs, setBlogs] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const [materialsRes, blogsRes] = await Promise.all([
+//           fetch("/api/resources/materials"),
+//           fetch("/api/resources/blogs")
+//         ]);
+
+//         if (materialsRes.ok) setMaterials(await materialsRes.json());
+//         if (blogsRes.ok) setBlogs(await blogsRes.json());
+//       } catch (err) {
+//         console.error("Failed to fetch resources data:", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div className="min-h-screen bg-white">
+      
+//       {/* 1. HERO SECTION */}
+//       <section className="relative h-[50vh] flex items-center justify-center">
+//         <Image 
+//           src={heroData.image} 
+//           alt="Resources Hero" 
+//           fill 
+//           className="object-cover brightness-[0.6]"  
+//           sizes="100vw"
+//           priority 
+//         />
+//         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+//           <motion.h1 
+//             initial={{ opacity: 0, y: 20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             className="text-4xl md:text-6xl font-serif mb-4"
+//           >
+//             Student Resources
+//           </motion.h1>
+//           <p className="text-lg text-slate-200 max-w-2xl mx-auto font-light">
+//             {heroData.subtitle}
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* 2. DOWNLOAD GUIDES (Fixed Card Structure) */}
+//           {/* 2. DOWNLOAD GUIDES (Inspired List Layout) */}
+//           <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+//         <div className="mb-12">
+//           <h2 className="text-3xl font-serif text-slate-900">Downloadable Guides</h2>
+//         </div>
+
+//         <div className="divide-y divide-slate-200 rounded-[2rem] border border-slate-200 overflow-hidden bg-white">
+//           {loading ? (
+//              <div className="p-12 text-center text-slate-500">Loading guides...</div>
+//           ) : materials.filter(m => m.isPublished).length === 0 ? (
+//              <div className="p-12 text-center text-slate-500">No guides available right now.</div>
+//           ) : (
+//              materials.filter(m => m.isPublished).map((guide, i) => {
+//               const Icon = LucideIcons[guide.iconName] || LucideIcons.FileText;
+//               const theme = themeMap[guide.themeName] || themeMap.blue;
+
+//               return (
+//                 <motion.div
+//                   key={guide.id}
+//                   initial={{ opacity: 0, y: 14 }}
+//                   whileInView={{ opacity: 1, y: 0 }}
+//                   viewport={{ once: true }}
+//                   transition={{ delay: i * 0.08 }}
+//                   className="px-6 md:px-10 py-8"
+//                 >
+//                   <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+//                     <div className="w-full lg:w-[90px] flex lg:flex-col items-baseline lg:items-start gap-3 lg:gap-1">
+//                       <span className="text-xs uppercase tracking-widest text-slate-400 font-bold">
+//                         Guide
+//                       </span>
+//                       <span className="text-3xl md:text-4xl font-serif text-slate-900 leading-none">
+//                         {String(i + 1).padStart(2, '0')}
+//                       </span>
+//                     </div>
+
+//                     <div className="flex-1 min-w-0">
+//                       <div className="flex items-start gap-4">
+//                         <div className={`shrink-0 w-12 h-12 rounded-full ${theme.iconBg} flex items-center justify-center`}>
+//                           <Icon className={`w-6 h-6 ${theme.iconColor}`} />
+//                         </div>
+
+//                         <div className="min-w-0">
+//                           <h3 className="text-2xl md:text-3xl font-serif text-slate-900 leading-tight">
+//                             {guide.title}
+//                           </h3>
+
+//                           <p className="mt-3 text-slate-500 leading-relaxed text-sm md:text-base">
+//                             {guide.description}
+//                           </p>
+//                         </div>
+//                       </div>
+//                     </div>
+
+//                   {/* RIGHT: “Image” replacement (lucide logo panel) + Download tab */}
+//                     <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-row items-stretch gap-4 lg:gap-5">
+//                       <div className="flex-1 sm:flex-none sm:w-[220px] h-[110px] rounded-3xl bg-slate-50 border border-slate-200 flex items-center justify-center">
+//                         <Icon className="w-12 h-12 text-slate-700" />
+//                       </div>
+
+//                       <a
+//                         href={guide.fileUrl}
+//                         download
+//                         className="group sm:w-[170px] lg:w-[170px] h-[56px] sm:h-[110px] rounded-3xl bg-slate-900 text-white flex items-center justify-center gap-3 font-bold shadow-sm hover:bg-slate-800 transition-colors"
+//                       >
+//                         <span className="text-sm">Download</span>
+//                         <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+//                       </a>
+//                     </div>
+//                   </div>
+//                 </motion.div>
+//               );
+//             })
+//           )}
+//         </div>
+//       </section> 
+
+
+
+//      {/* 2.5 STUDY LINKS */}
+//      <StudyLinksSection />
+
+
+
+//      {/* 3. BLOGS SECTION (Redesigned: Editorial Look) */}
+//        <section className="bg-white py-24 px-6 lg:px-12">
+//         <div className="max-w-7xl mx-auto">
+//           <h2 className="text-3xl font-serif text-slate-900 mb-12">Latest Insights</h2>
+
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+//             {loading ? (
+//                <div className="col-span-full py-12 text-center text-slate-500">Loading insights...</div>
+//             ) : blogs.filter(b => b.isPublished).length === 0 ? (
+//                <div className="col-span-full py-12 text-center text-slate-500">No articles available right now.</div>
+//             ) : blogs.filter(b => b.isPublished).map((blog) => (
+//               <motion.div 
+//                 key={blog.id}
+//                 layoutId={`blog-card-${blog.id}`}
+//                 onClick={() => setSelectedBlog(blog)}
+//                 className="group cursor-pointer flex flex-col w-full bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 h-full"
+//                 whileHover={{ y: -4 }}
+//               > 
+//                 {/* 1. Image Container (Taller, vertical orientation) */}
+//                 <div className="relative aspect-[4/3] mt-4 mx-4 overflow-hidden rounded-[1.5rem] bg-pink-50 flex-shrink-0">
+//                   <Image 
+//                     src={blog.imageUrl} 
+//                     alt={blog.title} 
+//                     fill  
+//                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+//                     className="object-cover transition-transform duration-700 group-hover:scale-105" 
+//                   />
+                  
+//                   {/* Floating Tags (Minimal) */}
+//                   <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
+//                     {blog.tags.slice(0, 2).map((tag, t) => (
+//                       <span 
+//                         key={t} 
+//                         className="px-3 py-1.5 text-[11px] font-semibold rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-sm backdrop-blur-sm"
+//                       >
+//                         {tag}
+//                       </span>
+//                     ))}
+//                   </div>
+//                 </div>
+
+//                 {/* 2. Content Body (Vertical emphasis) */}
+//                 <div className="flex flex-col flex-1 p-6 md:p-8">
+//                   <h3 className="text-[20px] md:text-[22px] font-medium text-slate-900 mb-6 leading-snug line-clamp-3">
+//                     {blog.title}
+//                   </h3>
+
+//                   {/* 3. Action Footer: "Read more" with Logo */}
+//                   <div className="mt-auto">
+//                     <Link
+//                       href={`/resources/${blog.slug}`}
+//                       onClick={(e) => e.stopPropagation()}
+//                       className="inline-flex items-center gap-2 text-[1.1rem] font-medium text-[#8B5CF6] hover:text-[#7C3AED] transition-colors"
+//                     >
+//                       Read more
+//                       <ArrowUpRight className="w-5 h-5" />
+//                     </Link>
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </section> 
+
+
+
+
+//        {/* //CTA EVENTS CTA// */}
+//       <section className="w-full flex justify-center py-10">
+//       <Link
+//         href="/events"
+//         className="
+//           group relative overflow-hidden
+//           inline-flex items-center gap-3
+//           px-10 py-4
+//           bg-[#1a0b2e] /* The Dark Matte background (revealed on hover) */
+//           text-white
+//           font-semibold tracking-widest uppercase text-sm
+//           rounded-sm
+//           shadow-2xl shadow-purple-900/30
+//           transition-all duration-500 ease-out
+//         "
+//       >
+//         <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#2E0249] to-[#7c3aed] transform translate-x-0 group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
+        
+//         {/* Content Layer (z-10 ensures it stays on top of background) */}
+//         <span className="relative z-10 flex items-center gap-2">
+//           Checkout Events
+//           <ArrowRightCircle className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+//         </span>
+//       </Link>
+//       </section>
+
+
+
+
+//       {/* 4. THE PAPER POPUP MODAL */}
+//       <AnimatePresence>
+//         {selectedBlog && (
+//           <>
+//             {/* Darker Backdrop for focus */}
+//             <motion.div
+//               initial={{ opacity: 0 }}
+//               animate={{ opacity: 1 }}
+//               exit={{ opacity: 0 }}
+//               onClick={() => setSelectedBlog(null)}
+//               className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 cursor-pointer"
+//             />
+            
+//             {/* The "Paper" Container */}
+//             <motion.div
+//               layoutId={`blog-card-${selectedBlog.id}`}
+//               className="fixed z-50 top-[5%] left-0 right-0 mx-auto w-full max-w-3xl h-[90vh] bg-white md:rounded-t-lg shadow-2xl overflow-hidden flex flex-col"
+//               // Only top rounded to look like a sheet coming up
+//             >
+              
+//               {/* Header Actions (Sticky Top) */}
+//               <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 bg-white sticky top-0 z-10">
+//                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Article View</span>
+//                 <button 
+//                   onClick={() => setSelectedBlog(null)}
+//                   className="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors"
+//                 >
+//                   <X className="w-5 h-5 text-slate-600" />
+//                 </button>
+//               </div>
+
+//               {/* Scrollable Paper Content */}
+//               <div className="overflow-y-auto px-8 md:px-16 py-12">
+                
+//                 {/* Article Header */}
+//                 <div className="mb-10 text-center">
+//                    <div className="flex justify-center gap-2 mb-6">
+//                       {selectedBlog.tags.map((tag, t) => (
+//                         <span key={t} className={`px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider ${getTagColor(tag)}`}>
+//                           {tag}
+//                         </span>
+//                       ))}
+//                    </div>
+//                    <h2 className="text-3xl md:text-5xl font-serif text-slate-900 mb-6 leading-tight">
+//                      {selectedBlog.title}
+//                    </h2>
+//                    <div className="flex items-center justify-center gap-6 text-slate-400 text-sm font-medium">
+//                       <span className="flex items-center gap-2"><Calendar className="w-4 h-4"/> Today</span>
+//                       <span className="flex items-center gap-2"><Clock className="w-4 h-4"/> 5 min read</span>
+//                    </div>
+//                 </div>
+
+//                 {/* Main Image (Inline now, not background) */}
+//                 <div className="relative w-full h-80 md:h-[400px] rounded-xl overflow-hidden mb-12">
+//                   <Image src={selectedBlog.imageUrl} alt={selectedBlog.title} fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover" />
+//                 </div>
+
+//                 {/* Article Prose */}
+//                 <div 
+//                   className="prose prose-lg prose-slate mx-auto font-serif"
+//                   dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
+//                 />
+
+//                 {/* Footer of Paper */}
+//                 <div className="mt-16 pt-10 border-t border-slate-100 text-center">
+//                   <p className="text-slate-400 text-sm italic mb-6">Found this helpful?</p>
+//                   <button 
+//                     onClick={() => setSelectedBlog(null)}
+//                     className="px-8 py-3 bg-slate-900 text-white rounded-full font-bold hover:bg-blue-600 transition-colors"
+//                   >
+//                     Done Reading
+//                   </button>
+//                 </div>
+
+//               </div>
+//             </motion.div>
+//           </>
+//         )}
+//       </AnimatePresence>
+
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Download, ArrowRight, X, ArrowUpRight, Calendar, Clock, ArrowRightCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, ArrowRightCircle } from 'lucide-react';
 import * as LucideIcons from "lucide-react";
 import StudyLinksSection from '@/components/StudyLink';
 import Link from 'next/link';
 
 // Fallback Hero Data
 const heroData = {
-    title: "Everything you need for your journey",
-    subtitle: "Free downloadable guides, checklists, and expert articles to help you navigate your study abroad application with confidence.",
-    image: "/resources/resource_hero.avif" 
+  title: "Everything you need for your journey",
+  subtitle:
+    "Free downloadable guides, checklists, and expert articles to help you navigate your study abroad application with confidence.",
+  image: "/resources/resource_hero.avif",
 };
 
-const getTagColor = (tag) => {
-    const t = tag.toLowerCase();
-    if (t.includes('exam') || t.includes('ielts') || t.includes('pte')) return 'bg-[#FEF3C7] text-[#92400E]'; // Yellow
-    if (t.includes('english') || t.includes('language')) return 'bg-[#DBEAFE] text-[#1E40AF]'; // Blue
-    if (t.includes('healing') || t.includes('budget')) return 'bg-[#D1FAE5] text-[#065F46]'; // Green
-    return 'bg-slate-100 text-slate-600'; // Default Gray
-};
-
-// Map theme strings to Tailwind classes based on your original design
+// Map theme strings to Tailwind classes
 const themeMap = {
   blue: { bgColor: "bg-[#EFF6FF]", iconBg: "bg-[#3B82F6]", iconColor: "text-white", textColor: "text-[#1E3A8A]" },
   green: { bgColor: "bg-[#ECFDF5]", iconBg: "bg-[#10B981]", iconColor: "text-white", textColor: "text-[#064E3B]" },
@@ -35,7 +398,6 @@ const themeMap = {
 };
 
 export default function ResourcesPage() {
-  const [selectedBlog, setSelectedBlog] = useState(null);
   const [materials, setMaterials] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,7 +407,7 @@ export default function ResourcesPage() {
       try {
         const [materialsRes, blogsRes] = await Promise.all([
           fetch("/api/resources/materials"),
-          fetch("/api/resources/blogs")
+          fetch("/api/resources/blogs"),
         ]);
 
         if (materialsRes.ok) setMaterials(await materialsRes.json());
@@ -56,24 +418,26 @@ export default function ResourcesPage() {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
+  const publishedMaterials = materials.filter((m) => m.isPublished);
+  const publishedBlogs = blogs.filter((b) => b.isPublished && b.slug);
+
   return (
     <div className="min-h-screen bg-white">
-      
-      {/* 1. HERO SECTION */}
       <section className="relative h-[50vh] flex items-center justify-center">
-        <Image 
-          src={heroData.image} 
-          alt="Resources Hero" 
-          fill 
-          className="object-cover brightness-[0.6]"  
+        <Image
+          src={heroData.image}
+          alt="Resources Hero"
+          fill
+          className="object-cover brightness-[0.6]"
           sizes="100vw"
-          priority 
+          priority
         />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-serif mb-4"
@@ -86,20 +450,18 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* 2. DOWNLOAD GUIDES (Fixed Card Structure) */}
-          {/* 2. DOWNLOAD GUIDES (Inspired List Layout) */}
-          <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-3xl font-serif text-slate-900">Downloadable Guides</h2>
         </div>
 
         <div className="divide-y divide-slate-200 rounded-[2rem] border border-slate-200 overflow-hidden bg-white">
           {loading ? (
-             <div className="p-12 text-center text-slate-500">Loading guides...</div>
-          ) : materials.filter(m => m.isPublished).length === 0 ? (
-             <div className="p-12 text-center text-slate-500">No guides available right now.</div>
+            <div className="p-12 text-center text-slate-500">Loading guides...</div>
+          ) : publishedMaterials.length === 0 ? (
+            <div className="p-12 text-center text-slate-500">No guides available right now.</div>
           ) : (
-             materials.filter(m => m.isPublished).map((guide, i) => {
+            publishedMaterials.map((guide, i) => {
               const Icon = LucideIcons[guide.iconName] || LucideIcons.FileText;
               const theme = themeMap[guide.themeName] || themeMap.blue;
 
@@ -140,7 +502,6 @@ export default function ResourcesPage() {
                       </div>
                     </div>
 
-                  {/* RIGHT: “Image” replacement (lucide logo panel) + Download tab */}
                     <div className="w-full lg:w-auto flex flex-col sm:flex-row lg:flex-row items-stretch gap-4 lg:gap-5">
                       <div className="flex-1 sm:flex-none sm:w-[220px] h-[110px] rounded-3xl bg-slate-50 border border-slate-200 flex items-center justify-center">
                         <Icon className="w-12 h-12 text-slate-700" />
@@ -161,192 +522,97 @@ export default function ResourcesPage() {
             })
           )}
         </div>
-      </section> 
+      </section>
 
+      <StudyLinksSection />
 
-
-     {/* 2.5 STUDY LINKS */}
-     <StudyLinksSection />
-
-
-
-     {/* 3. BLOGS SECTION (Redesigned: Editorial Look) */}
-       <section className="bg-white py-24 px-6 lg:px-12">
+      <section className="bg-white py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-serif text-slate-900 mb-12">Latest Insights</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {loading ? (
-               <div className="col-span-full py-12 text-center text-slate-500">Loading insights...</div>
-            ) : blogs.filter(b => b.isPublished).length === 0 ? (
-               <div className="col-span-full py-12 text-center text-slate-500">No articles available right now.</div>
-            ) : blogs.filter(b => b.isPublished).map((blog) => (
-              <motion.div 
-                key={blog.id}
-                layoutId={`blog-card-${blog.id}`}
-                onClick={() => setSelectedBlog(blog)}
-                className="group cursor-pointer flex flex-col w-full bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 h-full"
-                whileHover={{ y: -4 }}
-              > 
-                {/* 1. Image Container (Taller, vertical orientation) */}
-                <div className="relative aspect-[4/3] mt-4 mx-4 overflow-hidden rounded-[1.5rem] bg-pink-50 flex-shrink-0">
-                  <Image 
-                    src={blog.imageUrl} 
-                    alt={blog.title} 
-                    fill  
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                  />
-                  
-                  {/* Floating Tags (Minimal) */}
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
-                    {blog.tags.slice(0, 2).map((tag, t) => (
-                      <span 
-                        key={t} 
-                        className="px-3 py-1.5 text-[11px] font-semibold rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-sm backdrop-blur-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="col-span-full py-12 text-center text-slate-500">Loading insights...</div>
+            ) : publishedBlogs.length === 0 ? (
+              <div className="col-span-full py-12 text-center text-slate-500">No articles available right now.</div>
+            ) : (
+              publishedBlogs.map((blog) => (
+                <motion.div
+                  key={blog.id}
+                  whileHover={{ y: -4 }}
+                  className="h-full"
+                >
+                  <Link
+                    href={`/resources/${blog.slug}`}
+                    className="group flex flex-col w-full bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 h-full overflow-hidden"
+                  >
+                    <div className="relative aspect-[4/3] mt-4 mx-4 overflow-hidden rounded-[1.5rem] bg-pink-50 flex-shrink-0">
+                      <Image
+                        src={blog.imageUrl}
+                        alt={blog.title}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
 
-                {/* 2. Content Body (Vertical emphasis) */}
-                <div className="flex flex-col flex-1 p-6 md:p-8">
-                  <h3 className="text-[20px] md:text-[22px] font-medium text-slate-900 mb-6 leading-snug line-clamp-3">
-                    {blog.title}
-                  </h3>
+                      <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
+                        {(blog.tags || []).slice(0, 2).map((tag, t) => (
+                          <span
+                            key={t}
+                            className="px-3 py-1.5 text-[11px] font-semibold rounded-full uppercase tracking-wider bg-white/95 text-slate-800 shadow-sm backdrop-blur-sm"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-                  {/* 3. Action Footer: "Read more" with Logo */}
-                  <div className="mt-auto">
-                    <Link
-                      href={`/resources/${blog.id}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-2 text-[1.1rem] font-medium text-[#8B5CF6] hover:text-[#7C3AED] transition-colors"
-                    >
-                      Read more
-                      <ArrowUpRight className="w-5 h-5" />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                    <div className="flex flex-col flex-1 p-6 md:p-8">
+                      <h3 className="text-[20px] md:text-[22px] font-medium text-slate-900 mb-4 leading-snug line-clamp-3">
+                        {blog.title}
+                      </h3>
+
+                      {blog.description ? (
+                        <p className="text-sm text-slate-500 leading-relaxed mb-6 line-clamp-3">
+                          {blog.description}
+                        </p>
+                      ) : null}
+
+                      <div className="mt-auto inline-flex items-center gap-2 text-[1.05rem] font-medium text-[#8B5CF6] group-hover:text-[#7C3AED] transition-colors">
+                        Read more
+                        <ArrowUpRight className="w-5 h-5" />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))
+            )}
           </div>
         </div>
-      </section> 
-
-
-
-
-       {/* //CTA EVENTS CTA// */}
-      <section className="w-full flex justify-center py-10">
-      <Link
-        href="/events"
-        className="
-          group relative overflow-hidden
-          inline-flex items-center gap-3
-          px-10 py-4
-          bg-[#1a0b2e] /* The Dark Matte background (revealed on hover) */
-          text-white
-          font-semibold tracking-widest uppercase text-sm
-          rounded-sm
-          shadow-2xl shadow-purple-900/30
-          transition-all duration-500 ease-out
-        "
-      >
-        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#2E0249] to-[#7c3aed] transform translate-x-0 group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
-        
-        {/* Content Layer (z-10 ensures it stays on top of background) */}
-        <span className="relative z-10 flex items-center gap-2">
-          Checkout Events
-          <ArrowRightCircle className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </span>
-      </Link>
       </section>
 
-
-
-
-      {/* 4. THE PAPER POPUP MODAL */}
-      <AnimatePresence>
-        {selectedBlog && (
-          <>
-            {/* Darker Backdrop for focus */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedBlog(null)}
-              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 cursor-pointer"
-            />
-            
-            {/* The "Paper" Container */}
-            <motion.div
-              layoutId={`blog-card-${selectedBlog.id}`}
-              className="fixed z-50 top-[5%] left-0 right-0 mx-auto w-full max-w-3xl h-[90vh] bg-white md:rounded-t-lg shadow-2xl overflow-hidden flex flex-col"
-              // Only top rounded to look like a sheet coming up
-            >
-              
-              {/* Header Actions (Sticky Top) */}
-              <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 bg-white sticky top-0 z-10">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Article View</span>
-                <button 
-                  onClick={() => setSelectedBlog(null)}
-                  className="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors"
-                >
-                  <X className="w-5 h-5 text-slate-600" />
-                </button>
-              </div>
-
-              {/* Scrollable Paper Content */}
-              <div className="overflow-y-auto px-8 md:px-16 py-12">
-                
-                {/* Article Header */}
-                <div className="mb-10 text-center">
-                   <div className="flex justify-center gap-2 mb-6">
-                      {selectedBlog.tags.map((tag, t) => (
-                        <span key={t} className={`px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider ${getTagColor(tag)}`}>
-                          {tag}
-                        </span>
-                      ))}
-                   </div>
-                   <h2 className="text-3xl md:text-5xl font-serif text-slate-900 mb-6 leading-tight">
-                     {selectedBlog.title}
-                   </h2>
-                   <div className="flex items-center justify-center gap-6 text-slate-400 text-sm font-medium">
-                      <span className="flex items-center gap-2"><Calendar className="w-4 h-4"/> Today</span>
-                      <span className="flex items-center gap-2"><Clock className="w-4 h-4"/> 5 min read</span>
-                   </div>
-                </div>
-
-                {/* Main Image (Inline now, not background) */}
-                <div className="relative w-full h-80 md:h-[400px] rounded-xl overflow-hidden mb-12">
-                  <Image src={selectedBlog.imageUrl} alt={selectedBlog.title} fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover" />
-                </div>
-
-                {/* Article Prose */}
-                <div 
-                  className="prose prose-lg prose-slate mx-auto font-serif"
-                  dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
-                />
-
-                {/* Footer of Paper */}
-                <div className="mt-16 pt-10 border-t border-slate-100 text-center">
-                  <p className="text-slate-400 text-sm italic mb-6">Found this helpful?</p>
-                  <button 
-                    onClick={() => setSelectedBlog(null)}
-                    className="px-8 py-3 bg-slate-900 text-white rounded-full font-bold hover:bg-blue-600 transition-colors"
-                  >
-                    Done Reading
-                  </button>
-                </div>
-
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
+      <section className="w-full flex justify-center py-10">
+        <Link
+          href="/events"
+          className="
+            group relative overflow-hidden
+            inline-flex items-center gap-3
+            px-10 py-4
+            bg-[#1a0b2e]
+            text-white
+            font-semibold tracking-widest uppercase text-sm
+            rounded-sm
+            shadow-2xl shadow-purple-900/30
+            transition-all duration-500 ease-out
+          "
+        >
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#2E0249] to-[#7c3aed] transform translate-x-0 group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
+          <span className="relative z-10 flex items-center gap-2">
+            Checkout Events
+            <ArrowRightCircle className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+        </Link>
+      </section>
     </div>
   );
 }

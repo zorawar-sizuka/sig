@@ -9,7 +9,7 @@ const staticRoutes = [
 ];
 
 function toIso(date) {
-  return date.toISOString();
+  return new Date(date).toISOString();
 }
 
 function escapeXml(str) {
@@ -26,11 +26,8 @@ export async function GET() {
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
 
   const now = new Date();
-
-  // Build URLs
   const urls = [];
 
-  // Static pages
   for (const p of staticRoutes) {
     urls.push({
       loc: `${siteUrl}${p}`,
@@ -38,13 +35,34 @@ export async function GET() {
     });
   }
 
-  // Country pages (from your data)
   for (const c of countriesData) {
     if (!c?.slug) continue;
+
     urls.push({
       loc: `${siteUrl}/countries/${c.slug}`,
       lastmod: toIso(now),
     });
+  }
+
+  try {
+    const blogsRes = await fetch(`${siteUrl}/api/resources/blogs`, {
+      cache: "no-store",
+    });
+
+    if (blogsRes.ok) {
+      const blogs = await blogsRes.json();
+
+      for (const blog of blogs) {
+        if (!blog?.isPublished || !blog?.slug) continue;
+
+        urls.push({
+          loc: `${siteUrl}/resources/${blog.slug}`,
+          lastmod: toIso(blog.updatedAt || blog.createdAt || now),
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Failed to fetch blogs for sitemap:", error);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -60,6 +78,8 @@ ${urls
 </urlset>`;
 
   return new Response(xml, {
-    headers: { "Content-Type": "application/xml" },
+    headers: {
+      "Content-Type": "application/xml",
+    },
   });
 }

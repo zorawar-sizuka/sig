@@ -44,7 +44,7 @@ export default function ResourcesPage() {
         headline: b.title,
         description: b.desc,
         image: b.image ? `${siteUrl}${b.image}` : undefined,
-        url: `${siteUrl}/resources`, // Step 2 will replace this with /resources/<slug>
+        url: `${siteUrl}/resources/slug`, // Step 2 will replace this with /resources/<slug>
       })),
     ],
   };
