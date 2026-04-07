@@ -1,10 +1,10 @@
 
 
 
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/Hero-Comp/NavBar";
 import "./globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Hero-Comp/Footer";
 import FloatingDock from "@/components/FloatingDock";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });

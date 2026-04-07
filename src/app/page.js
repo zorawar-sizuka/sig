@@ -1,94 +1,35 @@
-import Hero1 from "@/components/Hero-Comp/Hero1";
-import Hero2 from "@/components/Hero-Comp/Hero2";
-import DestinationsCluster from "@/components/DestinationsCluster";
-import Hero3 from "@/components/Hero-Comp/Hero3";
-import ServicesEditorial from "@/components/ServicesEditorial";
-import Founder from "@/components/Founder";
-import Stats from "@/components/Stats";
 import ContactSection from "@/components/Contact";
-import TestimonialsCarousel from "@/components/Testimonials";
-import LogoMarquee from "@/components/Marquee";
+import Founder from "@/components/Hero-Comp/CEO";
+import ContactRequest from "@/components/Hero-Comp/Contact";
+import CTA from "@/components/Hero-Comp/CTA";
+import DestinationsCluster from "@/components/Hero-Comp/DestinationCluster";
+import Footer from "@/components/Hero-Comp/Footer";
+import Hero from "@/components/Hero-Comp/Hero";
+import HeroRefined from "@/components/Hero-Comp/Hero2";
+import LogoMarquee from "@/components/Hero-Comp/Marquee";
+import Process from "@/components/Hero-Comp/Process";
+import ServicesSection from "@/components/Hero-Comp/Services";
+import Testimonials from "@/components/Hero-Comp/Testimonials";
+import ImpactSection from "@/components/Hero-Comp/Whyus";
 
-// Domain-safe base (works now on vercel.app, later on custom domain)
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
-
-// ✅ Home-specific metadata (overrides global defaults from layout)
-export const metadata = {
-  title: "Education Consultancy in Kathmandu | Study Abroad Guidance",
-  description:
-    "Study abroad consultancy in Kathmandu helping students with university selection, admissions, scholarships, SOP guidance, and visa support for UK, USA, Canada, Australia, Germany, Japan and more.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "Education Consultancy in Kathmandu | Study Abroad Guidance",
-    description:
-      "Admissions, scholarships, SOP guidance, and visa support for top destinations like UK, USA, Canada, Australia, Germany, Japan and more.",
-    url: siteUrl,
-    images: [{ url: "/ogs/og.png", width: 1200, height: 630, alt: "Study Abroad Consultancy" }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Education Consultancy in Kathmandu",
-    description:
-      "Study abroad guidance, admissions support, scholarships, SOP help and visa assistance.",
-      images: [
-        {
-          url: "/ogs/og.png",
-          width: 1200,
-          height: 630,
-          alt: "Study Abroad Made Simple",
-        },
-      ],
-  },
-};
 
 export default function Home() {
-  // ✅ Schema: Organization + Website (safe defaults)
-  // You can later add address/phone/social links when you have them.
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "E-spot International Education Consultancy",
-    url: siteUrl,
-    logo: `${siteUrl}/logos/logo.png`, // add /public/logo.png (or change path)
-    sameAs: [
-     "https://www.instagram.com/espotinternational", 
-     "https://www.facebook.com/espotinternational", 
-     "https://www.tiktok.com/@espotinternational"
-    ], 
-  };
-
-  const websiteLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "E-spot International Education Consultancy",
-    url: siteUrl,
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
-      />
-
-      <Hero1 />
+    <main>
+      <Hero/>
       <div className="block md:hidden w-100vw relative left-1/2 -translate-x-1/2 my-10 bg-white">
         <LogoMarquee originalColor={true} />
       </div>
-      <Hero2 />
-      <DestinationsCluster />
-      <Hero3 />
-      <ServicesEditorial />
-      <Founder />
-      <Stats />
-      <TestimonialsCarousel />
-      <ContactSection />
-    </>
+      <HeroRefined/>
+      <DestinationsCluster/>
+      <Process/>
+      <ServicesSection/>
+      <ImpactSection/>
+      <Founder/>
+      <Testimonials/>
+      <CTA/>
+      <ContactRequest/>
+    
+    </main>
   );
 }
