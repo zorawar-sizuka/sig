@@ -55,7 +55,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="w-full bg-[#fefffe] py-16 sm:py-20 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-10 xl:px-16">
+    <section className="w-full bg-brand-blue-50/30 py-16 sm:py-20 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-10 xl:px-16">
       <div className="max-w-[1600px] mx-auto">
         {/* HEADER */}
         <div className="mb-12 sm:mb-14 lg:mb-16 max-w-2xl">
@@ -86,7 +86,7 @@ export default function ServicesSection() {
                 delay: index * 0.06,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative overflow-hidden rounded-[16px] sm:rounded-[18px] bg-[#f2f4f7] min-h-[220px] sm:min-h-[250px] border border-[#1b2856]/[0.06] shadow-[0_4px_20px_rgba(27,40,86,0.03)] block"
+              className="relative overflow-hidden rounded-[16px] sm:rounded-[18px] bg-white border border-brand-blue-100 shadow-[0_4px_20px_rgba(26,40,87,0.03)] block"
             >
               <div className="flex h-full flex-col p-5 sm:p-6">
                 <div className="mb-8 sm:mb-10">
@@ -128,7 +128,7 @@ export default function ServicesSection() {
                 delay: index * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group relative overflow-hidden rounded-[20px] bg-[#f2f4f7] min-h-[460px] xl:min-h-[500px] border border-[#1b2856]/[0.06] shadow-[0_4px_20px_rgba(27,40,86,0.03)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(27,40,86,0.10)] block"
+              className="group relative overflow-hidden rounded-[20px] bg-white min-h-[460px] xl:min-h-[500px] border border-brand-blue-100 shadow-[0_4px_20px_rgba(26,40,87,0.03)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(26,40,87,0.08)] block"
             >
               {/* FULL CARD HOVER IMAGE */}
               <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[20px]">

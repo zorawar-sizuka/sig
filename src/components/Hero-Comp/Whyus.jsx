@@ -123,7 +123,7 @@ export default function ImpactSection() {
   const frameY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden bg-[#fdfdfd] px-4 sm:px-6 lg:px-12 xl:px-20 py-16 sm:py-20 lg:py-28 xl:py-36">
+    <section ref={sectionRef} className="w-full overflow-hidden bg-brand-red-50/30 px-4 sm:px-6 lg:px-12 xl:px-20 py-16 sm:py-20 lg:py-28 xl:py-36">
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-14 sm:gap-16 lg:grid-cols-12 lg:gap-20 xl:gap-24">
         
         {/* LEFT: TEXT & TINTED CARDS */}
@@ -159,7 +159,7 @@ export default function ImpactSection() {
         {/* RIGHT: FRAMED GALLERY */}
        {/* RIGHT: MODULAR BENTO GALLERY */}
 <motion.div style={{ y: frameY }} className="lg:col-span-7 flex items-center">
-  <div className="w-full rounded-[32px] sm:rounded-[40px] lg:rounded-[56px] border border-white bg-white/50 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
+  <div className="w-full rounded-[32px] sm:rounded-[40px] lg:rounded-[56px] border border-brand-red-100 bg-brand-red-50/40 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-[0_20px_50px_rgba(236,33,36,0.03)]">
     <div className="grid h-[550px] sm:h-[650px] lg:h-[750px] grid-cols-12 grid-rows-6 gap-3 sm:gap-4">
       
       {/* 1. TALL LEFT PILLAR - Hero Image */}
@@ -168,16 +168,16 @@ export default function ImpactSection() {
         alt="University Campus"
         delay={0.05}
         parallaxRange={[-30, 30]} 
-        className="col-span-4 row-span-4 rounded-[24px] overflow-hidden shadow-sm"
+        className="col-span-8 md:col-span-4 row-span-4 rounded-[24px] overflow-hidden shadow-sm"
       />
 
       {/* 2. MIDDLE FEATURE PILLAR - Narrative/Quote */}
-      <div className="col-span-4 row-span-4 rounded-[24px] bg-white p-6 shadow-sm flex flex-col justify-between border border-gray-50">
+      <div className="hidden md:flex col-span-4 row-span-4 rounded-[24px] bg-white p-6 shadow-sm flex-col justify-between border border-brand-red-50">
         <div className="space-y-4">
           <div className="w-10 h-10 rounded-full bg-[#ec2025] flex items-center justify-center text-white">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H10.017C8.91243 16 8.017 16.8954 8.017 18V21M3 11L12 3L21 11V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V11Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
           </div>
-          <p className="text-[#1b2856] font-medium leading-relaxed text-sm sm:text-base">
+          <p className="text-[#1b2856] font-medium leading-relaxed md:text-base">
             "SGA didn't just find me a university; they mapped out my entire career trajectory in London."
           </p>
         </div>

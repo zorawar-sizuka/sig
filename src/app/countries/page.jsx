@@ -30,7 +30,7 @@ const cardVariants = {
 
 export default function CountriesIndexPage() {
   return (
-    <div className="min-h-screen bg-slate-50 mt-10">
+    <div className="min-h-screen bg-brand-blue-50/20 mt-10">
       
       {/* 1. Header Section */}
       <div className="bg-white border-b border-slate-200">
@@ -41,7 +41,7 @@ export default function CountriesIndexPage() {
             transition={{ duration: 0.6 }}
           >
             {/* FIXED: Changed outer 'span' to 'div' to prevent Hydration Error */}
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-4"> 
+            <div className="inline-block px-4 py-1.5 rounded-full bg-brand-blue-100/50 text-brand-blue-700 border border-brand-blue-200 text-xs font-bold uppercase tracking-widest mb-4"> 
                 <div className='flex items-center justify-between gap-1'>
                   <MapPinHouse size={14} /> Destinations 
                 </div> 
@@ -82,14 +82,14 @@ export default function CountriesIndexPage() {
                     
                     {/* Badge */}
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-900 flex items-center gap-1 shadow-sm">
-                        <Globe className="w-3 h-3 text-blue-500" />
+                        <Globe className="w-3 h-3 text-brand-red-500" />
                         Study Hub
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-8">
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors font-serif">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-brand-blue-600 transition-colors font-serif">
                       {country.name}
                     </h2>
                     <p className="text-slate-500 line-clamp-2 text-sm leading-relaxed mb-6">
@@ -118,8 +118,8 @@ export default function CountriesIndexPage() {
 
       {/* 3. CTA */}
       <section className="py-24 flex justify-center relative">
-  <BookButton className="group relative z-10 inline-flex items-center justify-center cursor-pointer px-8 py-4 bg-slate-900 text-white rounded-full overflow-hidden">
-    <div className="absolute inset-0 w-full h-full bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out pointer-events-none" />
+  <BookButton className="group relative z-10 inline-flex items-center justify-center cursor-pointer px-8 py-4 bg-brand-blue-900 text-white rounded-full overflow-hidden">
+    <div className="absolute inset-0 w-full h-full bg-brand-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out pointer-events-none" />
     <div className="relative  font-medium tracking-wide flex items-center gap-2 ">
       Start Your Application
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

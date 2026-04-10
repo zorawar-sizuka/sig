@@ -335,11 +335,11 @@ const commonCourses = [
     tagline: 'Engineering excellence and tuition-free education in the heart of Europe.',
     heroImage: '/country_hero/germany_hero.avif', // Neuschwanstein Castle or Berlin
 
-    // Theme Config (Amber/Gold - Distinct from UK Red/US Blue)
-    themeColor: 'bg-amber-600',
-    lightThemeColor: 'bg-amber-50',
-    textColor: 'text-amber-700',
-    borderColor: 'border-amber-200',
+    // Theme Config (Brand Red - Distinguishing from generic colors)
+    themeColor: 'bg-brand-red-600',
+    lightThemeColor: 'bg-brand-red-50',
+    textColor: 'text-brand-red-700',
+    borderColor: 'border-brand-red-200',
 
     stats: [
       { label: 'Public Tuition', value: '€0 - €300 / sem' },

@@ -137,9 +137,9 @@ export default function AboutPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-start">
           <div className="flex flex-col gap-8">
-            <div className="inline-flex items-center gap-2 bg-[#FF7700] px-4 py-2.5 self-start">
-              <Plus className="w-3 h-3 text-black" />
-              <span className="text-xs font-bold uppercase tracking-widest text-black">
+            <div className="inline-flex items-center gap-2 bg-brand-red-500 px-4 py-2.5 self-start">
+              <Plus className="w-3 h-3 text-white" />
+              <span className="text-xs font-bold uppercase tracking-widest text-white">
                 Our Mission
               </span>
             </div>
@@ -167,7 +167,7 @@ export default function AboutPage() {
             
           {/* Leaders */}
           <div className="text-center mb-12 md:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0c39b1] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-blue-600 mb-2 block">
               Expertise
             </span>
             <h3 className="text-3xl md:text-5xl font-medium text-slate-900 font-serif">
@@ -214,7 +214,7 @@ export default function AboutPage() {
 
           {/* Counselors */}
           <div className="text-center mb-12 md:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0c39b1] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-blue-600 mb-2 block">
               Guidance
             </span>
             <h3 className="text-3xl md:text-5xl font-medium text-slate-900 font-serif">
@@ -252,7 +252,7 @@ export default function AboutPage() {
                   <h4 className="text-lg md:text-xl font-bold text-slate-900 lg:text-white mb-1">
                     {member.name}
                   </h4>
-                  <p className="text-xs md:text-sm font-medium text-[#FF7700] lg:text-white/70 uppercase tracking-wide">
+                  <p className="text-xs md:text-sm font-medium text-brand-red-500 lg:text-white/70 uppercase tracking-wide">
                     {member.role}
                   </p>
                 </div>
@@ -270,7 +270,7 @@ export default function AboutPage() {
             
                     {/* Counselors */}
                     <div className="text-center mb-12 md:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0c39b1] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-blue-600 mb-2 block">
             A history of strategic growth and student's success
             </span>
             <h3 className="text-3xl md:text-5xl font-medium text-slate-900 font-serif">
@@ -317,8 +317,8 @@ export default function AboutPage() {
             5. CTA
         ------------------------------------------------------- */}
         <section className="py-24 flex justify-center"> 
-          <BookButton className="group relative px-6 sm:px-8 py-4 bg-slate-900 text-white rounded-full overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+          <BookButton className="group relative px-6 sm:px-8 py-4 bg-brand-blue-900 text-white rounded-full overflow-hidden">
+            <div className="absolute inset-0 w-full h-full bg-brand-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
             <span className="relative z-10 font-medium tracking-wide flex items-center gap-2">
               Start Your Application
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -366,13 +366,13 @@ function JourneyStep({ item, index }) {
 
       {/* CENTRAL DOT (Desktop Only) */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center">
-        <div className="w-4 h-4 bg-[#10b981] rounded-full border-[3px] border-[#F6F5F2] shadow-sm z-10" />
+        <div className="w-4 h-4 bg-brand-red-500 rounded-full border-[3px] border-[#F6F5F2] shadow-sm z-10" />
       </div>
 
       {/* 2. TEXT SIDE */}
       <div className="w-full lg:w-1/2 pl-0 lg:pl-0">
         <div className="flex flex-col items-start">
-          <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-[#4373f8] opacity-90 mb-4 font-serif">
+          <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-brand-blue-500 opacity-90 mb-4 font-serif">
             {number}
           </span>
           <h4 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 mb-4">

@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 
 export default function Founder() {
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section className="py-16 md:py-24 lg:py-32 bg-brand-red-50/10 relative overflow-hidden">
       {/* Background Decor: subtle brand-tinted atmosphere */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f9fd] to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-brand-blue-50/40 to-white" />
         <div className="absolute -top-48 -left-48 w-[620px] h-[620px] bg-[#1b2856]/[0.05] rounded-full blur-[120px]" />
         <div className="absolute -bottom-56 -right-56 w-[720px] h-[720px] bg-[#ec2025]/[0.05] rounded-full blur-[140px]" />
       </div>
@@ -53,7 +53,7 @@ export default function Founder() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.85, ease: "circOut" }}
-                  className="relative z-10 w-[260px] h-[360px] md:w-[410px] md:h-[610px] rounded-3xl overflow-hidden shadow-[0_26px_70px_rgba(27,40,86,0.12)] bg-[#edf1f9]"
+                  className="relative z-10 w-[260px] h-[360px] md:w-[410px] md:h-[610px] rounded-3xl overflow-hidden shadow-[0_26px_70px_rgba(26,40,87,0.08)] bg-brand-blue-100/50"
                 >
                   <Image
                     src="/images/ceo.jpg"

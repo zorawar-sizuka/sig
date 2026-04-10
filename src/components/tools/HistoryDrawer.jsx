@@ -141,7 +141,7 @@ export default function HistoryDrawer({ open, onClose, activeTab, onRestore }) {
             animate={{ opacity: 0.35 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black z-40"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[105]"
           />
 
           <motion.div
@@ -149,7 +149,7 @@ export default function HistoryDrawer({ open, onClose, activeTab, onRestore }) {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 420, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 border-l border-slate-200 shadow-2xl flex flex-col"
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-[110] border-l border-slate-200 shadow-2xl flex flex-col"
           >
             <div className="p-5 border-b border-slate-100 flex items-center justify-between">
               <div>

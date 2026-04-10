@@ -8,7 +8,7 @@ import ContactFormModern from "@/components/Contact2";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-brand-blue-50/20">
       {/* HERO */}
       <div className="relative h-[55vh] min-h-[420px] w-full overflow-hidden">
         <motion.div
@@ -57,7 +57,7 @@ export default function ContactPage() {
             transition={{ duration: 0.7 }}
             className="lg:w-2/5 xl:w-5/12"
           >
-            <div className="bg-[#F6F5F2] p-9 sm:p-10 lg:p-12 rounded-[2.5rem] h-full flex flex-col">
+            <div className="bg-brand-blue-50 p-9 sm:p-10 lg:p-12 rounded-[2.5rem] h-full flex flex-col border border-brand-blue-100/50">
               <div className="flex-1">
                 <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 mb-10">
                   Contact Information
@@ -67,7 +67,7 @@ export default function ContactPage() {
                   {/* Head Office Address */}
                   <div className="flex items-start gap-5">
                     <div className="p-3 bg-white rounded-full shrink-0">
-                      <MapPin className="w-5 h-5 text-blue-600" />
+                      <MapPin className="w-5 h-5 text-brand-red-500" />
                     </div>
                     <div className="flex-1">
                       <span className="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-1.5">
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   {/* Branches */}
                   <div className="flex items-start gap-5">
                     <div className="p-3 bg-white rounded-full shrink-0">
-                      <Building2 className="w-5 h-5 text-blue-600" />
+                      <Building2 className="w-5 h-5 text-brand-red-500" />
                     </div>
                     <div className="flex-1 w-full">
                       <span className="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2.5">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                             <span className="font-medium shrink-0">{branch.city}:</span>
                             <a
                               href={`tel:${branch.phone.replace(/-/g, "")}`}
-                              className="text-slate-600 hover:text-blue-600 transition-colors whitespace-nowrap"
+                              className="text-slate-600 hover:text-brand-red-500 transition-colors whitespace-nowrap"
                             >
                               {branch.phone}
                             </a>
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   {/* Email */}
                   <div className="flex items-start gap-5">
                     <div className="p-3 bg-white rounded-full shrink-0">
-                      <Mail className="w-5 h-5 text-blue-600" />
+                      <Mail className="w-5 h-5 text-brand-red-500" />
                     </div>
                     <div>
                       <span className="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-1.5">
@@ -131,7 +131,7 @@ export default function ContactPage() {
                       </span>
                       <a
                         href="mailto:info@espotinternational.com"
-                        className="text-slate-900 hover:text-blue-600 transition-colors block break-all whitespace-nowrap"
+                        className="text-slate-900 hover:text-brand-red-500 transition-colors block break-all whitespace-nowrap"
                       >
                         info@espotinternational.com
                       </a>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                   {/* Phone */}
                   <div className="flex items-start gap-5">
                     <div className="p-3 bg-white rounded-full shrink-0">
-                      <Phone className="w-5 h-5 text-blue-600" />
+                      <Phone className="w-5 h-5 text-brand-red-500" />
                     </div>
                     <div>
                       <span className="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-1.5">
@@ -173,7 +173,7 @@ export default function ContactPage() {
                       href={item.href}
                       target={item.name === "Email" ? undefined : "_blank"}
                       rel={item.name === "Email" ? undefined : "noopener noreferrer"}
-                      className="text-slate-800 font-medium hover:text-blue-600 transition-colors underline underline-offset-4 decoration-slate-300 hover:decoration-blue-400 text-sm"
+                      className="text-slate-800 font-medium hover:text-brand-red-500 transition-colors underline underline-offset-4 decoration-slate-300 hover:decoration-brand-red-400 text-sm"
                     >
                       {item.name}
                     </a>

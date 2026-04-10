@@ -91,8 +91,8 @@ function Arrow({ direction }) {
 function TestimonialCard({ testimonial, featured = false }) {
   return (
     <article
-      className={`relative flex min-h-[340px] w-[320px] shrink-0 flex-col rounded-[24px] bg-[#f1f2ef] p-6 md:min-h-[365px] md:w-[380px] md:p-7 ${
-        featured ? "shadow-[0_18px_50px_rgba(27,40,86,0.08)]" : ""
+      className={`relative flex min-h-[340px] w-[320px] shrink-0 flex-col rounded-[24px] bg-brand-blue-50/60 border border-brand-blue-100/50 p-6 md:min-h-[365px] md:w-[380px] md:p-7 ${
+        featured ? "shadow-[0_18px_50px_rgba(26,40,87,0.06)]" : ""
       }`}
     >
       <Stars />
@@ -124,7 +124,7 @@ export default function Testimonials() {
   const marqueeTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="w-full overflow-hidden bg-[#ffffff] px-6 py-20 md:px-10 md:py-24 xl:px-14 xl:py-28">
+    <section className="w-full overflow-hidden bg-brand-blue-50/20 px-6 py-20 md:px-10 md:py-24 xl:px-14 xl:py-28">
       <div className="mx-auto max-w-[1440px]">
         {/* Heading */}
         <div className="mx-auto max-w-[760px] text-center">

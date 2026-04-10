@@ -393,35 +393,35 @@ export default function ToolsPage() {
       label: 'Eligibility', 
       desc: 'Visa Chances', 
       icon: Sparkles, 
-      activeColor: 'bg-[#0c38b0]/10 border-[#0c38b0]/30 text-[#0c38b0]' 
+      activeColor: 'bg-brand-blue-50 border-brand-blue-200 text-brand-blue-900' 
     },
     { 
       id: 'discovery', 
       label: 'Uni Finder', 
       desc: 'Search DB', 
       icon: Search, 
-      activeColor: 'bg-[#ef6926]/10 border-[#ef6926]/30 text-[#ef6926]' 
+      activeColor: 'bg-brand-red-50 border-brand-red-100 text-brand-red-500' 
     },
     { 
       id: 'calculator', 
       label: 'Budget', 
       desc: 'Cost Est.', 
       icon: Calculator, 
-      activeColor: 'bg-[#0c38b0]/10 border-[#0c38b0]/30 text-[#0c38b0]' 
+      activeColor: 'bg-brand-blue-50 border-brand-blue-200 text-brand-blue-900' 
     },
     { 
       id: 'gpa', 
       label: 'GPA', 
       desc: 'Converter', 
       icon: GraduationCap, 
-      activeColor: 'bg-[#ef6926]/10 border-[#ef6926]/30 text-[#ef6926]' 
+      activeColor: 'bg-brand-red-50 border-brand-red-100 text-brand-red-500' 
     },
     { 
       id: 'sop', 
       label: 'SOP Gen', 
       desc: 'AI Writer', 
       icon: FileText, 
-      activeColor: 'bg-[#0c38b0]/10 border-[#0c38b0]/30 text-[#0c38b0]' 
+      activeColor: 'bg-brand-blue-50 border-brand-blue-200 text-brand-blue-900' 
     },
   ];
 
@@ -448,15 +448,15 @@ export default function ToolsPage() {
                 [ The Student Suite ]
               </h2>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[0.92] text-[#0c38b0]">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[0.92] text-brand-blue-700">
                 Global Ambitions, <br />
-                <span className="text-[#ef6926] transition-colors duration-500">
+                <span className="text-brand-red-500 transition-colors duration-500">
                   Strategized.
                 </span>
               </h1>
             </motion.div>
 
-            <p className="text-lg text-gray-700 leading-relaxed max-w-xl border-l-4 border-[#0c38b0]/30 pl-6 mt-6">
+            <p className="text-lg text-gray-700 leading-relaxed max-w-xl border-l-4 border-brand-blue-200 pl-6 mt-6">
               Our AI-powered consultant tools help you assess visa eligibility,
               estimate living costs, and draft the perfect SOP—all in one place.
             </p>
@@ -472,19 +472,19 @@ export default function ToolsPage() {
                     className="w-full h-full"
                   />
                   {/* subtle brand overlay on lottie */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0c38b0]/8 to-[#ef6926]/6 pointer-events-none rounded-full mix-blend-soft-light" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-100/50 to-brand-red-100/50 pointer-events-none rounded-full mix-blend-soft-light" />
                 </div>
               )}
             </div>
 
             <div className="flex items-center gap-6 text-xs font-mono text-gray-500 uppercase tracking-widest border-t border-gray-200 pt-4 w-full lg:w-auto justify-center lg:justify-end">
               <div className="flex flex-col items-center lg:items-end">
-                <span className="text-[#0c38b0] font-bold text-sm">{effectiveCountryOptions.length} Countries</span>
+                <span className="text-brand-blue-700 font-bold text-sm">{effectiveCountryOptions.length} Countries</span>
                 {/* <span>Database Ready</span> */}
               </div>
               <div className="h-8 w-px bg-gray-200" />
               <div className="flex flex-col items-center lg:items-end">
-                <span className="text-[#ef6926] font-bold text-sm">v2.4</span>
+                <span className="text-brand-red-500 font-bold text-sm">v2.4</span>
                 {/* <span>Algorithm Updated</span> */}
               </div>
             </div>
@@ -515,7 +515,7 @@ export default function ToolsPage() {
                     `}
                   >
                     <tab.icon
-                      className={`w-5 h-5 transition-colors ${isActive ? 'text-current' : 'text-gray-600 group-hover:text-[#0c38b0]'}`}
+                      className={`w-5 h-5 transition-colors ${isActive ? 'text-current' : 'text-gray-600 group-hover:text-brand-blue-900'}`}
                       strokeWidth={isActive ? 2.2 : 1.8}
                     />
 
@@ -542,11 +542,11 @@ export default function ToolsPage() {
                   flex items-center gap-2.5 px-4 py-3
                   rounded-xl bg-white border border-gray-200
                   text-gray-700 font-medium
-                  hover:border-[#0c38b0]/40 hover:text-[#0c38b0]
+                  hover:border-brand-blue-400 hover:text-brand-blue-900
                   transition-all duration-300 group
                 "
               >
-                <History className="w-4 h-4 text-gray-500 group-hover:text-[#0c38b0] transition-colors" />
+                <History className="w-4 h-4 text-gray-500 group-hover:text-brand-blue-900 transition-colors" />
                 <span className="text-sm hidden sm:inline">History</span>
                 <ArrowRight className="w-3 h-3 hidden sm:inline opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all" />
               </button>
@@ -560,7 +560,7 @@ export default function ToolsPage() {
             layout
             className="bg-white rounded-3xl shadow-xl shadow-gray-200/30 border border-gray-200/60 overflow-hidden relative"
           >
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0c38b0]/20 via-[#ef6926]/30 to-[#0c38b0]/20 opacity-40" />
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-brand-blue-100/20 via-brand-red-100/30 to-brand-blue-100/20 opacity-40" />
 
             <div className="p-4 sm:p-8 lg:p-12 min-h-[500px]">
               <AnimatePresence mode="wait">

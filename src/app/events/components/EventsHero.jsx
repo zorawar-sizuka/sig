@@ -46,10 +46,10 @@ export default function EventsHero() {
               className="inline-flex items-center gap-3 mb-7"
             >
               <span className="relative flex h-2.5 w-8">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-60"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-8 bg-[#ef6925]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red-400 opacity-60"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-8 bg-brand-red-500"></span>
               </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-indigo-900">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-blue-700">
                 Kathmandu Events
               </span>
             </motion.div>
@@ -58,10 +58,10 @@ export default function EventsHero() {
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.8 }}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-[#3a56a4] leading-[0.92] tracking-tighter"
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-brand-blue-700 leading-[0.92] tracking-tighter"
             >
               Curated <br />
-              <span className="italic text-[#f5682b]/60">Moments.</span>
+              <span className="italic text-brand-red-500/60">Moments.</span>
             </motion.h1>
 
             {/* Tags row (vertical line style) */}
@@ -74,7 +74,7 @@ export default function EventsHero() {
               {tags.map((t) => (
                 <div key={t} className="flex items-center gap-3">
                   {/* vertical line instead of capsule */}
-                  <span className="h-5 w-[2px] bg-indigo-200 rounded-full" />
+                  <span className="h-5 w-[2px] bg-brand-red-200 rounded-full" />
                   <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-700 uppercase">
                     {t}
                   </span>

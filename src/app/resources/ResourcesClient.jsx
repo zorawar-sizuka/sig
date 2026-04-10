@@ -392,7 +392,7 @@ const themeMap = {
   green: { bgColor: "bg-[#ECFDF5]", iconBg: "bg-[#10B981]", iconColor: "text-white", textColor: "text-[#064E3B]" },
   sky: { bgColor: "bg-[#E0F2FE]", iconBg: "bg-[#0EA5E9]", iconColor: "text-white", textColor: "text-[#0C4A6E]" },
   purple: { bgColor: "bg-[#F3E8FF]", iconBg: "bg-[#A855F7]", iconColor: "text-white", textColor: "text-[#581C87]" },
-  orange: { bgColor: "bg-[#FFEDD5]", iconBg: "bg-[#F97316]", iconColor: "text-white", textColor: "text-[#7C2D12]" },
+  orange: { bgColor: "bg-brand-red-50", iconBg: "bg-brand-red-500", iconColor: "text-white", textColor: "text-brand-red-700" },
   red: { bgColor: "bg-[#FEE2E2]", iconBg: "bg-[#EF4444]", iconColor: "text-white", textColor: "text-[#7F1D1D]" },
   slate: { bgColor: "bg-[#F1F5F9]", iconBg: "bg-[#64748B]", iconColor: "text-white", textColor: "text-[#0F172A]" },
 };
@@ -426,7 +426,7 @@ export default function ResourcesPage() {
   const publishedBlogs = blogs.filter((b) => b.isPublished && b.slug);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-brand-blue-50/10">
       <section className="relative h-[50vh] flex items-center justify-center">
         <Image
           src={heroData.image}
@@ -546,7 +546,7 @@ export default function ResourcesPage() {
                     href={`/resources/${blog.slug}`}
                     className="group flex flex-col w-full bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 h-full overflow-hidden"
                   >
-                    <div className="relative aspect-[4/3] mt-4 mx-4 overflow-hidden rounded-[1.5rem] bg-pink-50 flex-shrink-0">
+                    <div className="relative aspect-[4/3] mt-4 mx-4 overflow-hidden rounded-[1.5rem] bg-brand-blue-50 flex-shrink-0">
                       <Image
                         src={blog.imageUrl}
                         alt={blog.title}
@@ -578,7 +578,7 @@ export default function ResourcesPage() {
                         </p>
                       ) : null}
 
-                      <div className="mt-auto inline-flex items-center gap-2 text-[1.05rem] font-medium text-[#8B5CF6] group-hover:text-[#7C3AED] transition-colors">
+                      <div className="mt-auto inline-flex items-center gap-2 text-[1.05rem] font-medium text-brand-red-500 group-hover:text-brand-blue-600 transition-colors">
                         Read more
                         <ArrowUpRight className="w-5 h-5" />
                       </div>
@@ -598,15 +598,15 @@ export default function ResourcesPage() {
             group relative overflow-hidden
             inline-flex items-center gap-3
             px-10 py-4
-            bg-[#1a0b2e]
+            bg-brand-blue-900
             text-white
             font-semibold tracking-widest uppercase text-sm
-            rounded-sm
-            shadow-2xl shadow-purple-900/30
+            rounded-full
+            shadow-xl shadow-brand-blue-900/20
             transition-all duration-500 ease-out
           "
         >
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#2E0249] to-[#7c3aed] transform translate-x-0 group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
+          <span className="absolute inset-0 w-full h-full bg-brand-red-500 transform translate-x-0 group-hover:translate-x-full transition-transform duration-500 ease-in-out" />
           <span className="relative z-10 flex items-center gap-2">
             Checkout Events
             <ArrowRightCircle className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

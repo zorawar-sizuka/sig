@@ -270,7 +270,7 @@ export default function DestinationsCluster() {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-24 bg-[white] overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 bg-brand-red-50/10 overflow-hidden">
       
       {/* SEO Injection */}
       <script 
@@ -288,10 +288,10 @@ export default function DestinationsCluster() {
 
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif text-stone-900 mb-6 md:mb-8 leading-tight md:leading-[0.95] tracking-tight">
             The world is your <br className="hidden md:block" />
-            <span className="italic text-stone-400">campus.</span>
+            <span className="italic text-brand-blue-300/80">campus.</span>
           </h2>
 
-          <p className="text-base md:text-xl text-stone-500 font-light leading-relaxed max-w-lg md:max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-brand-blue-800/60 font-light leading-relaxed max-w-lg md:max-w-2xl mx-auto">
             We've built partnerships with top universities in the world's most innovative cities. Hover over the map to explore.
           </p>
         </div>

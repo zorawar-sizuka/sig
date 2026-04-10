@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import studentAnimation from "../../../public/lottie/educationsg.json";
 
-export default function HeroRefined() {
+export default function Hero2() {
   const fadeUp = {
     hidden: { opacity: 0, y: 28 },
     show: (delay = 0) => ({
@@ -21,7 +21,7 @@ export default function HeroRefined() {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-[white]">
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-brand-blue-50/40">
       {/* Background */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.01]"
@@ -64,7 +64,7 @@ export default function HeroRefined() {
               <motion.p
                 variants={fadeUp}
                 custom={0.16}
-                className="mb-10 sm:mb-12 lg:mb-14 max-w-[560px] border-l border-gray-200 pl-5 sm:pl-6 md:pl-7 text-[17px] sm:text-[18px] md:text-[19px] leading-[1.95] text-gray-500"
+                className="mb-10 sm:mb-12 lg:mb-14 max-w-[560px] border-l-2 border-brand-red-400/30 pl-5 sm:pl-6 md:pl-7 text-[17px] sm:text-[18px] md:text-[19px] leading-[1.95] text-brand-blue-800/70"
               >
                 We bridge the distance between ambition and reality. EIEC
                 operates as a strategic partner for students navigating
@@ -84,7 +84,7 @@ export default function HeroRefined() {
                     Explore Vision
                   </span>
 
-                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-gray-200 bg-white transition-all duration-500 group-hover:-translate-y-0.5 group-hover:border-[#1b2856] group-hover:bg-[#1b2856] shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-brand-blue-200 bg-white transition-all duration-500 group-hover:-translate-y-0.5 group-hover:border-[#1b2856] group-hover:bg-[#1b2856] shadow-[0_10px_30px_rgba(26,40,87,0.06)]">
                     <svg
                       className="h-4 w-4 text-[#1b2856] transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-white"
                       fill="none"
@@ -105,7 +105,7 @@ export default function HeroRefined() {
                   <span className="text-[16px] sm:text-[17px] font-bold text-[#1b2856]">
                     4.9 / 5
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue-400">
                     Student Rating
                   </span>
                 </div>
@@ -136,13 +136,13 @@ export default function HeroRefined() {
               <motion.div
                 animate={{ y: [0, -18, 0], x: [0, -6, 0], rotate: [0, -1.5, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-[-1%] top-[7%] sm:left-[2%] lg:left-[0%] xl:left-[2%] z-20 rounded-2xl border border-gray-100 bg-white/85 px-4 py-4 sm:px-5 sm:py-4 backdrop-blur-md shadow-[0_14px_50px_rgba(0,0,0,0.05)]"
+                className="absolute left-[-1%] top-[7%] sm:left-[2%] lg:left-[0%] xl:left-[2%] z-20 rounded-2xl border border-brand-blue-100 bg-white/85 px-4 py-4 sm:px-5 sm:py-4 backdrop-blur-md shadow-[0_14px_50px_rgba(26,40,87,0.06)]"
               >
                 <div className="flex items-center gap-3">
                   <div className="h-2.5 w-2.5 animate-pulse rounded-full bg-green-500" />
                   <p className="text-[20px] sm:text-[22px] font-bold text-[#1b2856]">98%</p>
                 </div>
-                <p className="mt-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <p className="mt-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-brand-blue-400/80">
                   Visa Success
                 </p>
               </motion.div>
@@ -156,10 +156,10 @@ export default function HeroRefined() {
                   ease: "easeInOut",
                   delay: 0.3,
                 }}
-                className="absolute right-[-1%] top-[11%] sm:right-[2%] lg:right-[0%] xl:right-[2%] z-20 rounded-2xl border border-gray-100 bg-white/85 px-4 py-4 sm:px-5 sm:py-4 backdrop-blur-md shadow-[0_14px_50px_rgba(0,0,0,0.045)]"
+                className="absolute right-[-1%] top-[11%] sm:right-[2%] lg:right-[0%] xl:right-[2%] z-20 rounded-2xl border border-brand-blue-100 bg-white/85 px-4 py-4 sm:px-5 sm:py-4 backdrop-blur-md shadow-[0_14px_50px_rgba(26,40,87,0.06)]"
               >
                 <p className="text-[17px] sm:text-[18px] font-bold text-[#1b2856]">25+ Nations</p>
-                <p className="mt-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <p className="mt-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-brand-blue-400/80">
                   Global Reach
                 </p>
               </motion.div>
@@ -168,9 +168,9 @@ export default function HeroRefined() {
               <motion.div
                 animate={{ x: [0, 14, 0], y: [0, -8, 0], rotate: [0, -1, 0] }}
                 transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-[16%] left-[-2%] sm:left-[1%] lg:left-[-1%] xl:left-[1%] z-20 flex items-center gap-3 rounded-2xl border border-gray-100 bg-white/90 px-4 py-3.5 sm:px-4.5 sm:py-4 shadow-[0_12px_38px_rgba(0,0,0,0.04)]"
+                className="absolute bottom-[16%] left-[-2%] sm:left-[1%] lg:left-[-1%] xl:left-[1%] z-20 flex items-center gap-3 rounded-2xl border border-brand-red-100 bg-white/90 px-4 py-3.5 sm:px-4.5 sm:py-4 shadow-[0_12px_38px_rgba(236,33,36,0.05)]"
               >
-                <div className="rounded-lg bg-[#e42027]/8 p-2.5">
+                <div className="rounded-lg bg-[#e42027]/10 p-2.5">
                   <span className="text-[11px] font-bold text-[#e42027]">AI</span>
                 </div>
                 <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[#1b2856]">
@@ -198,10 +198,10 @@ export default function HeroRefined() {
               </motion.div>
 
               {/* Ambient ring */}
-              <div className="absolute inset-0 -z-10 m-auto h-[82%] w-[82%] animate-[spin_60s_linear_infinite] rounded-full border border-dashed border-gray-400" />
+              <div className="absolute inset-0 -z-10 m-auto h-[82%] w-[82%] animate-[spin_60s_linear_infinite] rounded-full border border-dashed border-brand-blue-300/40" />
 
               {/* Secondary ambient ring */}
-              <div className="absolute inset-0 -z-10 m-auto h-[66%] w-[66%] rounded-full border border-gray-200/80" />
+              <div className="absolute inset-0 -z-10 m-auto h-[66%] w-[66%] rounded-full border border-brand-blue-200/50" />
             </motion.div>
           </div>
         </div>
