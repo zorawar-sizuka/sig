@@ -151,7 +151,7 @@ export default function Hero() {
       </motion.div>
 
       {/* MARQUEE: Integrated into the floor with proper margins */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 sm:px-6 md:px-8 lg:px-12  ">
+      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 sm:px-6 md:px-8 lg:px-12 mt-200  ">
         <div className="w-full opacity-[0.80] hover:opacity-[0.95] transition-opacity duration-300 hidden md:block ">
           <Marquee />
         </div>

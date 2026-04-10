@@ -8,6 +8,7 @@ import {
   Landmark,
   BookOpen,
   ArrowRight,
+  Plus,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -72,128 +73,64 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        {/* MOBILE / TABLET GRID */}
-        <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:hidden">
-          {services.map((service, index) => (
-            <MotionLink
-              href={service.href}
-              key={service.id}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative overflow-hidden rounded-[16px] sm:rounded-[18px] bg-white border border-brand-blue-100 shadow-[0_4px_20px_rgba(26,40,87,0.03)] block"
-            >
-              <div className="flex h-full flex-col p-5 sm:p-6">
-                <div className="mb-8 sm:mb-10">
-                  <div className="flex h-[64px] w-[64px] sm:h-[70px] sm:w-[70px] items-center justify-center rounded-[10px] sm:rounded-[12px] bg-[#ec2025]/10 border border-[#ec2025]/12">
-                    {React.cloneElement(service.icon, {
-                      className: "text-[#1b2856]",
-                    })}
-                  </div>
-                </div>
-
-                <div className="mt-auto">
-                  <div className="mb-3 flex items-center justify-between gap-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#ec2025]">
-                      {service.id}
-                    </span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#1b2856]/15" />
-                  </div>
-
-                  <h3 className="text-[20px] sm:text-[24px] font-semibold leading-[1.08] tracking-tight text-[#1b2856]">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
-            </MotionLink>
-          ))}
-        </div>
-
-        {/* DESKTOP GRID */}
-        <div className="hidden lg:grid lg:grid-cols-4 gap-6 xl:gap-8">
+        {/* UNIFIED GRID FOR ALL SCREEN SIZES */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
           {services.map((service, index) => (
             <MotionLink
               href={service.href}
               key={service.id}
               initial={{ opacity: 0, y: 34 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{
-                duration: 0.75,
-                delay: index * 0.08,
+                duration: 0.8,
+                delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group relative overflow-hidden rounded-[20px] bg-white min-h-[460px] xl:min-h-[500px] border border-brand-blue-100 shadow-[0_4px_20px_rgba(26,40,87,0.03)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(26,40,87,0.08)] block"
+              className="group relative overflow-hidden rounded-[1.5rem] bg-zinc-900 min-h-[480px] sm:min-h-[520px] lg:min-h-[560px] shadow-2xl block"
             >
-              {/* FULL CARD HOVER IMAGE */}
-              <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[20px]">
-                <div 
-                  className="absolute inset-x-0 top-full h-full opacity-0 transition-all duration-700 ease-[0.22,1,0.36,1] will-change-transform group-hover:top-0 group-hover:opacity-100"
-                >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="h-full w-full object-cover scale-[1.08] transition-transform duration-[1400ms] ease-out group-hover:scale-100"
-                  />
-                  
-                  {/* REFINED OVERLAYS */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1b2856]/82 via-[#1b2856]/35 to-transparent" />
-                  <div className="absolute inset-0 bg-[#ec2025]/5 mix-blend-overlay" />
-                </div>
+              {/* IMAGE LAYER */}
+              <div className="absolute inset-0 z-0 bg-zinc-100">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+                />
+                
+                {/* REFINED TIGHT GRADIENTS (Middle stays clear) */}
+                {/* Top Edge Shadow */}
+                <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/70 to-transparent" />
+                
+                {/* Bottom Edge Shadow */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
               </div>
 
-              {/* CARD CONTENT */}
-              <div className="relative z-10 flex h-full flex-col p-7 xl:p-8">
-                {/* ICON TILE */}
-                <div className="mb-20">
-                  <div className="flex h-[82px] w-[82px] items-center justify-center rounded-[12px] bg-[#ec2025]/10 border border-[#ec2025]/12 transition-all duration-500 group-hover:bg-white/12 group-hover:border-white/15 group-hover:backdrop-blur-sm">
-                    <div className="transition-all duration-500 group-hover:text-white">
-                      {React.cloneElement(service.icon, {
-                        className:
-                          "text-[#1b2856] group-hover:text-white transition-colors duration-500",
-                      })}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-auto relative z-20">
-                  <div className="mb-3 flex items-center justify-between gap-4">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#ec2025] transition-colors duration-500 group-hover:text-white/75">
-                      {service.id}
-                    </span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#1b2856]/15 transition-all duration-500 group-hover:bg-white/75" />
-                  </div>
-
-                  <h3 className="text-[32px] xl:text-[34px] font-semibold leading-[1.05] tracking-tight text-[#1b2856] transition-all duration-500 group-hover:text-white">
+              {/* CONTENT LAYER */}
+              <div className="relative z-10 flex h-full flex-col p-8 sm:p-10">
+                {/* TOP ROW: TITLE & PLUS BUTTON */}
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-[28px] sm:text-[32px] font-medium leading-[1.1] tracking-tight text-white max-w-[80%]">
                     {service.title}
                   </h3>
+                  
+                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:scale-110">
+                    <Plus size={24} strokeWidth={2} />
+                  </div>
+                </div>
 
-                  <p className="mt-4 max-w-[28ch] text-[16px] xl:text-[17px] leading-[1.55] text-[#1b2856]/58 transition-all duration-500 group-hover:text-white">
+                {/* BOTTOM ROW: DESCRIPTION */}
+                <div className="mt-auto space-y-6">
+                  <p className="max-w-[32ch] text-[16px] sm:text-[18px] leading-[1.5] text-white/80 group-hover:text-white transition-colors duration-500 font-light">
                     {service.description}
                   </p>
-
-                  <div className="mt-8 flex items-center gap-2 text-[#1b2856] transition-all duration-500 group-hover:text-white">
-                    <span className="text-[13px] font-semibold uppercase tracking-[0.16em]">
-                      Learn More
-                    </span>
-                    <ArrowRight
-                      size={18}
-                      className="transition-transform duration-500 group-hover:translate-x-1"
-                    />
-                  </div>
+                  
+                  {/* HIDDEN VISUAL INDICATOR REVEALED ON HOVER */}
+                  <div className="h-[1px] w-0 bg-white/40 transition-all duration-700 group-hover:w-full" />
                 </div>
               </div>
 
-              {/* BASE TINT */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1b2856]/[0.01]" />
-
-              {/* HOVER RING */}
-              <div className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-transparent transition-all duration-500 group-hover:ring-white/10" />
+              {/* SUBTLE BORDER HIGHLIGHT */}
+              <div className="absolute inset-0 rounded-[2.5rem] border border-white/10 pointer-events-none group-hover:border-white/20 transition-all duration-500" />
             </MotionLink>
           ))}
         </div>
